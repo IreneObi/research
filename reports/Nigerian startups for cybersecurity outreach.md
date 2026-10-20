@@ -1,6 +1,6 @@
 # Sell compliance first: 100 Nigerian startup security prospects
 
-A beginner cybersecurity freelancer in Nigeria in October 2026 has a long list of realistic first clients. This report names 100 of them, 48 rated tier A for beginners. The opening offer should be compliance-led documentation and passive hygiene work, not penetration testing. The demand comes from regulators more than from breaches. Almost any startup that processes data on more than 200 people in six months is a "major importance" data controller under the NDPA. It must register, run annual audits and report breaches within 72 hours. Lenders, crypto firms and payment companies carry extra FCCPC, SEC and bank-partner requirements on top. The strongest first targets are small, recently funded or newly licensed firms with sensitive data and no security hire: Duplo, Juicyway, Daya, Gigmile, Lendsqr, Sycamore, Risevest, Roqqu, Blockradar, PaidHR, PowerLabs, Curacel, Heyfood, Platos Health and Edves. Pitch each a fixed-price package of roughly ₦100k–₦1m (these are estimates). Typical contents are a DMARC fix, an NDPA starter pack, a cloud or Workspace hardening review or help with a security questionnaire. Two limits apply throughout. No researcher could open company websites, so security.txt files, VDPs, domains, headcounts and founder handles are all unverified. And 24 of the 100 companies need a 2026 status check before anyone contacts them, because 2025–26 brought a wave of shutdowns.
+A beginner cybersecurity freelancer in Nigeria in October 2026 has a long list of realistic first clients. This report names 100 of them, 48 rated tier A for beginners. The opening offer should be compliance-led documentation and passive hygiene work, not penetration testing. The demand comes from regulators more than from breaches. Almost any startup that processes data on more than 200 people in six months is a "major importance" data controller under the NDPA. It must register, run annual audits and report breaches within 72 hours. Lenders, crypto firms and payment companies carry extra FCCPC, SEC and bank-partner requirements on top. The strongest first targets are small, recently funded or newly licensed firms with sensitive data and no security hire: Duplo, Juicyway, Daya, Gigmile, Lendsqr, Sycamore, Risevest, Roqqu, Blockradar, PaidHR, PowerLabs, Curacel, Heyfood, Platos Health and Edves. Pitch each a fixed-price package of roughly ₦100k–₦1m (these are estimates). Typical contents are a DMARC fix, an NDPA starter pack, a cloud or Workspace hardening review or help with a security questionnaire. Two limits apply throughout. No researcher could open company websites, so security.txt files, VDPs, domains, headcounts and founder handles are all unverified. And 20 of the 100 companies need a 2026 status check before anyone contacts them, because 2025–26 brought a wave of shutdowns. A "Who to contact" section after the list names a decision maker for 98 of them and a company-published contact channel for 46.
 
 ## Five regulators turn data handling into a buying reason
 
@@ -68,14 +68,14 @@ The list is deduplicated: Lendsqr, Bumpa and Intron Health each appeared in two 
   - Heroshe, Joovlin and Hytch: shut down.
   - Sabi: pivoted to minerals.
   - Kobo360: no 2025–26 activity.
-  - MAX: conflicting shutdown/pivot evidence, and Series B-sized anyway.
+  - MAX: earlier notes had conflicting shutdown/pivot evidence; it is in fact active (CEO Adetayo Bamiduro; $8M debt facility, May 2026), but it is Series B-sized, so tier C at best.
   - Omnibiz and Catlog: no evidence.
 - Health and edtech:
   - 54gene, Healthlane and Medsaf: shut down.
   - Edukoya: shut down February 2025.
 - Other sectors:
   - Bento Africa: shut down February 2025 amid fraud allegations.
-  - Orda: listed as "Acquired".
+  - Orda: Moniepoint acquired its Nigerian operations (announced 23 March 2026). Security decisions now likely sit with Moniepoint (tier C), so treat Orda as low priority.
 - Not recommended:
   - Patricia: unresolved customer-fund crisis after its breach.
 
@@ -86,13 +86,13 @@ With these removed, more than 100 evidenced companies remained. The weakest four
 | # | Company | What they do | Stage / latest funding | Pitch hook | Best-fit beginner service | Tier | Status |
 |---|---|---|---|---|---|---|---|
 | 1 | [Duplo](https://techcabal.com/2026/03/16/duplo-secures-nrs-licence/) | B2B payments, invoicing, e-invoicing/tax and treasury | Seed $4.3M (YC; c.2023); NRS e-invoicing SI + Access Point licences Mar 2026; Wema ALAT Business embed Jul 2026 | New tax-authority integration plus bank-partner third-party-risk reviews | Vendor security-questionnaire and policy pack; SPF/DKIM/DMARC review | A | High |
-| 2 | [Juicyway](https://www.regcompass.com/april-2026-regulatory-roundup/) | B2B cross-border FX payments on stablecoin rails | $3M pre-seed Dec 2024; >$300M monthly volume (Nov 2025); named in CBN supervisory pilot Apr 2026 | CBN pilot scrutiny; business email compromise is the main threat to B2B FX | InfoSec/incident-response policy set; Workspace/M365 review; BEC phishing training | A | High |
+| 2 | [Juicyway](https://www.regcompass.com/april-2026-regulatory-roundup/) | B2B cross-border FX payments on stablecoin rails | $3M pre-seed Dec 2024; >$300M monthly volume (Nov 2025); named in CBN supervisory pilot Apr 2026 | CBN pilot scrutiny; business email compromise is the main threat to B2B FX. Co-founder/COO has left | InfoSec/incident-response policy set; Workspace/M365 review; BEC phishing training | A | High |
 | 3 | [Daya](https://techcabal.com/2026/06/24/daya-pre-seed-raise/) | Stablecoin payment infrastructure for African businesses | $2.4M pre-seed Jun 2026 (Hivemind Capital) | Freshly funded, wallet keys, almost certainly no security hire yet | Baseline security policies; cloud configuration review; secure-SDLC checklist | A | Medium |
 | 4 | [Cleva](https://thecondia.com/nigerian-fintech-cleva/) | USD accounts for Africans receiving foreign payments (YC W24) | $1.5M pre-seed early 2024 (1984 Ventures); publishing 2026 content | Account-takeover risk; US banking-partner requirements; very small team | ATO/phishing awareness content; DMARC anti-spoofing; NDPA documents | A | Medium |
 | 5 | [Raenest](https://techcrunch.com/2025/02/11/qed-leads-11m-investment-in-nigerian-fintech-raenest/) | Cross-border USD/GBP/EUR accounts and payouts for freelancers | $11M Series A Feb 2025 (QED); >700k users | KYC data (BVN/NIN, passports) for 700k+ users; ATO-prone user base | Social-engineering awareness; passive external-surface + DMARC review; NDPA documents | A | Medium |
 | 6 | [Bujeti](https://techpoint.africa/2023/12/07/bujeti-secures-2m-seed) | Corporate cards and expense management (YC) | $2M seed Dec 2023; active as Anchor client Sep 2025 | Company finance data and card programme; accounting integrations | Workspace/M365 hardening; phishing training (co-marketed to client finance teams) | A | Medium |
 | 7 | [Anchor](https://techcabal.com/2025/09/01/anchor-at-3-building-africas-fintech-infrastructure-powering-builders-touching-lives/) | Embedded-finance/BaaS APIs (accounts, payments, cards) | $2.4M seed Sep 2023; >$2.5B processed by Sep 2025 | Public API sitting beneath many fintechs (supply-chain risk); PCI scope | VDP + security.txt drafting; developer security docs; API review only under written scope | A | Medium |
-| 8 | [Fincra](https://techcabal.com/2026/05/06/fincra-secures-enhanced-payment-licence-in-ghana/) | B2B cross-border payments and collections API | Largely self-funded, reported profitable (Nov 2024); Bank of Ghana PSP licence May 2026 | Multiple regulators' cyber and data rules (Nigeria + Ghana) | NDPA + Ghana data-protection policy mapping; DMARC review | A | High |
+| 8 | [Fincra](https://techcabal.com/2026/05/06/fincra-secures-enhanced-payment-licence-in-ghana/) | B2B cross-border payments and collections API | Largely self-funded, reported profitable (Nov 2024); Bank of Ghana PSP licence May 2026 | Multiple regulators' cyber and data rules (Nigeria + Ghana). Publishes an ISO 27001 policy and claims ISO 27001/22301 + PCI DSS: expect a mature security function, so lead with a narrow specialist offer | NDPA + Ghana data-protection policy mapping; DMARC review | A | High |
 | 9 | [Maplerad](https://technext24.com/news/maplerad-nigerian-baas-raises-6m-in-seed/) | BaaS: card issuing, accounts, payment APIs | $6M seed Oct 2022 (Valar); still named as competitor Sep 2025 | Card issuing puts it in PCI DSS scope; public API | PCI DSS readiness documentation; DMARC review | B | Medium |
 | 10 | [Zone](https://techcrunch.com/2024/03/18/nigerian-fintech-zone-raises-8-5m-to-scale-its-decentralized-payment-infrastructure/) | CBN-licensed blockchain interbank payment network | $8.5M seed Mar 2024 | Bank-grade switching infrastructure; bank members demand strong controls | Questionnaire and policy-evidence support (narrow scope) | B | Medium |
 | 11 | [Grey](https://en.wikipedia.org/wiki/Grey_(company)) | Multi-currency accounts for individuals (YC W22) | Seed (8 investors); ~3M users (Jun 2026 review) | Large consumer base exposed to ATO; may already have security staff | Phishing-awareness content; VDP drafting or VDP participation | B | Medium |
@@ -100,7 +100,7 @@ With these removed, more than 100 evidenced companies remained. The weakest four
 | 13 | [Kora (Korapay)](https://tracxn.com/d/companies/kora/__PoOcvDiijfmUV2GOUkojXC9RwLnJBzYR9i3yU8dzXaM/funding-and-investors) | Payment gateway and infrastructure | ~$400K (Tracxn, Sep 2023; sources conflict) | Payment gateway handles card data; merchant API | PCI evidence gathering; DMARC review | B | Low ⚑ check |
 | 14 | [Lenco](https://pitchbook.com/profiles/company/467033-95) | Business banking (YC W22) | $500K accelerator stage (PitchBook) | Business-account data and payments | DMARC review; policy starter pack | B | Low ⚑ check |
 | 15 | [Nomba](https://techcrunch.com/2023/05/02/african-payment-service-provider-nomba-raises-30m-backed-by-base10-partners-and-shopify/) | POS, agent banking and payments | $30M pre-Series B May 2023 | Mid-size payments firm, likely >150 staff | Job route or narrow awareness-training scope only | C | Medium |
-| 16 | [Paystack](https://paystack.com/vulnerability-disclosure) | Payment gateway (Stripe-owned) | Stripe subsidiary | Has a public VDP/reward programme via HackerOne | Bug-bounty route within published scope only | C | High |
+| 16 | [Paystack](https://paystack.com/vulnerability-disclosure) | Payment gateway (Stripe-owned) | Stripe subsidiary | Has a public VDP/reward programme via HackerOne. Co-founder/CTO exited 2025 | Bug-bounty route within published scope only | C | High |
 | 17 | [Flutterwave](https://techpoint.africa/2024/05/16/flutterwaves-11-billion-breach/) | Pan-African payments; acquired Mono Jan 2026 | Large; CBN microlender licence Apr 2026 | Four reported unauthorised-transfer incidents in 14 months (2023–24) | Job or bug-bounty route only | C | High |
 | 18 | [Moniepoint](https://moniepoint.com/security-acknowledgements) | Business banking and payments | Series C extended to >$200M (2025) | CBN onboarding ban (2024); publishes a security-acknowledgements page | Job or disclosure-programme route only | C | High |
 
@@ -130,7 +130,7 @@ With these removed, more than 100 evidenced companies remained. The weakest four
 | 28 | [Curacel](https://nairametrics.com/2023/02/14/nigerias-insurtech-startup-curacel-raises-3-million-in-seed-funding/) | AI insurance-claims/fraud infrastructure and embedded insurance API | $3M seed Feb 2023 (YC W22); Cornerstone partnership Oct 2025 | Processes insurers' claims and health data; NAICOM-regulated clients send questionnaires | Questionnaire support; DPIA for AI claims; cloud configuration review | A | High |
 | 29 | [Awabah](https://www.pensionpolicyinternational.com/nigeria-pencom-redesigns-pension-plan-targets-informal-sector/) | Micro-pension plus bundled cover for informal workers | ~$370–492k angel/accelerator (latest Nov 2023); first PenCom Accredited Pension Agent | PenCom Personal Pension Plan redesign uses Super Agents: agent fraud and KYC | Agent phishing/social-engineering training; NDPA basics | A | Medium |
 | 30 | [MyCover.ai](https://www.finsmes.com/2023/07/mycover-ai-raises-1-25m-pre-seed-funding.html) | Insurance distribution / embedded insurance API | $1.25M pre-seed Jul 2023 (Ventures Platform) | API linking insurer partners; processor obligations | NDPA processor agreements; API review only under contract | B | Low ⚑ check |
-| 31 | [Casava](https://techcrunch.com/2022/02/02/casava-gets-4m-pre-seed-to-make-insurance-affordable-and-accessible-to-nigerians/) | Digital micro-insurance | $4M pre-seed Feb 2022 | Policyholder health/insurance data | NDPA starter pack (only after status confirmed) | B | Low ⚑ check |
+| 31 | [Casava](https://techcrunch.com/2022/02/02/casava-gets-4m-pre-seed-to-make-insurance-affordable-and-accessible-to-nigerians/) | Digital micro-insurance | $4M pre-seed Feb 2022; confirmed active (appointed COO Aug 2025) | Policyholder health/insurance data | NDPA starter pack | B | Medium |
 | 32 | [PenSphere](https://pensphere.ng/) | Pension remittance platform (says PenCom-approved) | No funding data found | Pension contribution data | NDPA starter pack | B | Low ⚑ check |
 
 ### Crypto & stablecoin (6 companies, 5 tier A)
@@ -161,9 +161,9 @@ With these removed, more than 100 evidenced companies remained. The weakest four
 | 49 | [Sendbox](https://brands.ng/sendbox-nigeria-review-best-delivery-platform-for-small-businesses/) | E-commerce fulfilment and logistics aggregation | ~$2M seed (directory; unverified) | Merchant storefronts and shopper PII | Merchant ATO controls review; NDPA | B | Low ⚑ check |
 | 50 | [SGX Mobility](https://www.get-invest.eu/story/an-electric-fleet-for-lagos-streets/) | Electric three-wheeler fleet operator on Bolt | €2.74M funding target (Aug 2025) | Driver financing KYC; telematics | Policy starter pack; NDPA | B | Medium |
 | 51 | [Vendease](https://tracxn.com/d/companies/vendease/__If65YknjHVW5c_qIOHQzMwN68F5yjk_pSS2SJzpeixk) | B2B food procurement for restaurants | ~$23.3M raised; 44% layoff Feb 2025 | Lean post-layoff team; supplier payments and embedded credit | Outsourced policy and NDPA work (watch budget risk) | B | Medium |
-| 52 | [Kwik Delivery](https://www.blog.shipbubble.com/top-10-reliable-dispatch-riders-in-lagos-fast-cheap-options-for-2026/) | Same-day last-mile delivery | No recent round found; listed as active option 2026 | Recipient PII and rider data | Ops phishing training; DMARC | B | Low ⚑ check |
-| 53 | [TruQ](https://www.orepulse.com/news/top-20-logistics-tech-startups-solving-the-transportation-hurdles-in-africa) | On-demand trucking | ~$220K raised | Shipper and driver data | DMARC review; policy starter pack | B | Low ⚑ check |
-| 54 | [Shuttlers](https://www.tekedia.com/nigerian-ridesharing-startup-shuttlers-raises-4m-in-funding-round/) | Corporate/commuter bus-hailing | $5.6M total (2021–22) | Commuter home/route location data | NDPA location-data assessment | B | Low ⚑ check |
+| 52 | [Kwik Delivery](https://www.blog.shipbubble.com/top-10-reliable-dispatch-riders-in-lagos-fast-cheap-options-for-2026/) | Same-day last-mile delivery | No recent round found; listed as active option 2026 | Recipient PII and rider data. ⚑ Dutch parent (Africa Delivery Technologies Holding) declared bankrupt May 2025; Nigerian operation reportedly continues – verify before outreach | Ops phishing training; DMARC | B | Low ⚑ check |
+| 53 | [TruQ](https://www.orepulse.com/news/top-20-logistics-tech-startups-solving-the-transportation-hurdles-in-africa) | On-demand trucking | ~$220K raised | Shipper and driver data. ⚑ CEO's resignation reported (undated) – confirm leadership | DMARC review; policy starter pack | B | Low ⚑ check |
+| 54 | [Shuttlers](https://www.tekedia.com/nigerian-ridesharing-startup-shuttlers-raises-4m-in-funding-round/) | Corporate/commuter bus-hailing | $5.6M total (2021–22); Google Maps transit integration Jun 2026 | Commuter home/route location data | NDPA location-data assessment | B | High |
 | 55 | [Chowdeck](https://techpoint.africa/insight/investigation-glovo-and-chowdeck-onboarding-process/) | Food delivery and quick-commerce (YC) | $9M Series A Aug 2025 (Novastar); ~259 staff | May 2026 Techpoint fake-vendor onboarding investigation | Narrow scope only: rider/vendor-ops phishing training or onboarding-policy help | C | High |
 | 56 | [TradeDepot](https://partechpartners.com/news/tradedepot-raises-110-million-to-extend-buy-now-pay-later-to-retailers-across-africa) | B2B informal-retail distribution and BNPL | $110M raise (equity + debt); ~326–396 staff | Retailer credit/KYC data, field devices | Narrow ops phishing training only | C | Medium |
 | 57 | [LagRide](https://www.techinafrica.com/lagride-pioneers-electric-vehicle-integration-in-nigerias-ride-hailing-sector/) | Lagos State-backed ride-hailing | $100M EV facility with Lagos State and UBA (Dec 2025) | Government PPP: formal procurement only | Partnership or procurement route only | C | Medium |
@@ -181,8 +181,8 @@ With these removed, more than 100 evidenced companies remained. The weakest four
 | 64 | [Clafiya](https://incubees.com/nigerian-health-tech-startup-clafiya-raised-610k-pre-seed-funding/) | Home-based primary care via community health workers | $610K pre-seed 2023 | Patient records on field devices (loss/theft) | Device and backup checklist; BYOD policy; DPIA | B | Low ⚑ check |
 | 65 | [Intron Health](https://techpoint.africa/news/intron-health-raises-pre-seed/) | Clinical speech recognition for African accents | $1.6M pre-seed Jul 2024 (Microtraction) | Patient audio/transcripts; hospital clients ask security questions | AI data-governance DPIA; questionnaire prep | B | Low ⚑ check |
 | 66 | [DrugStoc](https://tracxn.com/d/companies/drugstoc/__Zg9Iswsx3iyV1XE1X6m-Z94S4S3W5PSm5auPjIeM0y4) | Licensed pharma distribution e-commerce | ~$4.4–4.56M total; last entry a grant Sep 2023 | Invoice fraud/BEC in B2B ordering | DMARC review; Workspace hardening; phishing training | B | Low ⚑ check |
-| 67 | [10mg Health](https://startupmaphub.com/startups/seed/nigeria) | AI collateral-free credit for clinics and pharmacies | Seed-stage listing only | Lending/KYC data for health businesses | Verify existence first; then NDPA starter pack | B | Low ⚑ check |
-| 68 | [Helium Health](https://techpoint.africa/news/helium-health-30m-seriesb/) | EMR/hospital software and HeliumCredit | $30M Series B Jun 2023 (AXA IM Alts) | Hospital EMR data at scale; likely has security staff | Narrow scope only (client-hospital awareness training) or job route | C | Medium |
+| 67 | [10mg Health](https://startupmaphub.com/startups/seed/nigeria) | AI collateral-free credit for clinics and pharmacies | Seed stage; named on Bloomberg's 25 African startups to watch (2026) | Lending/KYC data for health businesses | NDPA starter pack (note: 10mghealth.com is an unrelated blog) | B | Medium |
+| 68 | [Helium Health](https://techpoint.africa/news/helium-health-30m-seriesb/) | EMR/hospital software and HeliumCredit | $30M Series B Jun 2023 (AXA IM Alts) | Hospital EMR data at scale; likely has security staff. CEO Adegoke Olubusi stepped down ~Aug 2026, no successor named | Narrow scope only (client-hospital awareness training) or job route | C | Medium |
 | 69 | [Reliance Health](https://www.crunchbase.com/organization/reliancehealth/news_and_analysis) | Tech-enabled HMO (ex-Kangpe) | $40M Series B 2022 (General Atlantic) | Insurance-sector NDPC sweep; large health dataset | Job or partnership route | C | Medium |
 
 ### Edtech (11 companies, 4 tier A)
@@ -199,7 +199,7 @@ With these removed, more than 100 evidenced companies remained. The weakest four
 | 77 | [EduPali](https://www.techloy.com/edupali-lets-you-make-school-fee-payments-with-ease/) | School-fee split payments for low-income families | Raising $500K pre-seed (2023); >100 schools | Instalment-credit and children's data | DMARC anti-fraud; NDPA | B | Low ⚑ check |
 | 78 | [AltSchool Africa](https://altschoolafrica.com/degrees/cybersecurity) | Tech-talent school with cybersecurity diploma and B.Sc. | Larger than seed | Large learner/payment base; also a possible employer | Instructor/mentor/TA partnership route | C | Medium |
 | 79 | [Utiva](https://www.edtechnology.com.ng/top-10-edtech-platforms-in-nigeria-2026/) | Tech-skills bootcamps incl. cybersecurity | Not stated | Better as instructor/mentor partner than client | Mentor or instructor partnership route | C | Medium |
-| 80 | [uLesson](https://www.reveliolabs.com/companies/ulesson/employees) | K-12 learning app and devices | $25.6M total; Series B Dec 2021; headcount ~448→191 | Large minors' dataset; shrinking staff may outsource security | Narrow scoped pitch only | C | Medium |
+| 80 | [uLesson](https://www.reveliolabs.com/companies/ulesson/employees) | K-12 learning app and devices | $25.6M total; Series B Dec 2021; headcount ~448→191 | Large minors' dataset; shrinking staff may outsource security. CEO transition: Iheanyi Akwitti CEO-Designate, Group CEO from 1 Jan 2027 | Narrow scoped pitch only | C | Medium |
 
 ### HR, B2B SaaS, AI & creator platforms (10 companies, 4 tier A)
 
@@ -227,9 +227,188 @@ With these removed, more than 100 evidenced companies remained. The weakest four
 | 95 | [Arnergy](https://urbangeekz.com/2025/04/bill-gates-arnergy-15m-series-b-nigerias-solar/) | Solar with lease-to-own financing | $15M Series B extension Apr 2025 (CardinalStone) | Remotely monitored solar fleet; customer financing PII | DMARC/external review; NDPA + ISO readiness docs (refer IoT testing) | A | High |
 | 96 | [Crop2Cash](https://pitchbook.com/profiles/company/399106-18) | Digital payments and value-chain tools for farmers (Ibadan) | ~27 staff (PitchBook) | Farmer KYC, USSD and payment flows, field devices | NDPA gap; phishing training; passive external review | B | Medium |
 | 97 | [Releaf](https://www.primebusiness.africa/?p=60652) | Palm-kernel processing tech and biochar | $3.3M pre-Series A (Jan 2023) | Supplier payments; OT equipment (not beginner work) | Policy drafting; M365/Workspace review | B | Low ⚑ check |
-| 98 | [Agriarche](https://techgix.vercel.app/post/9-nigerian-startups-that-gained-funding-in-2025) | Agri logistics and storage | $500K debt (2025 roundup; low-authority source) | Thin public data | Verify first; then DMARC/policy starter | B | Low ⚑ check |
-| 99 | [Spleet](https://techpoint.africa/news/nigerian-proptech-spleet-seed/) | Rent management and rent-now-pay-later | $2.6M seed Oct 2022 (MaC) | Tenant IDs, income/credit data, landlord bank details | NDPA gap; OWASP test only under contract | B | Low ⚑ check |
-| 100 | [ThriveAgric](https://ventureburn.com/2022/03/nigerian-agritech-thriveagric-56-4m/) | Large agritech with farmer financing | $56.4M debt raise 2022; likely >150 staff | Large farmer PII database | Job or partnership route | C | Low ⚑ check |
+| 98 | [Agriarche](https://techgix.vercel.app/post/9-nigerian-startups-that-gained-funding-in-2025) | Agri logistics and storage | $500K debt (2025 roundup); Proparco backing Jun 2026; Cascador debt facility Oct 2026 | New DFI investor (Proparco) due diligence | DMARC review; policy starter pack | B | High |
+| 99 | [Spleet](https://techpoint.africa/news/nigerian-proptech-spleet-seed/) | Rent management and rent-now-pay-later | $2.6M seed Oct 2022 (MaC) | Tenant IDs, income/credit data, landlord bank details. Leadership change: CEO removed Mar 2024; COO Daniela Ajala runs the company; no 2025–26 activity found | NDPA gap; OWASP test only under contract | B | Low ⚑ check |
+| 100 | [ThriveAgric](https://ventureburn.com/2022/03/nigerian-agritech-thriveagric-56-4m/) | Large agritech with farmer financing | $56.4M debt raise 2022; likely >150 staff | Large farmer PII database. CEO identity disputed | Job or partnership route | C | Low ⚑ check |
+
+## Who to contact
+
+The tables below name the most senior decision maker found for each prospect, with a confidence rating in brackets, and the company's own published channel. **High** means a dated 2025–26 source names the person in that role. **Medium** means the source is undated, a directory or a profile. **Low** means the evidence is old, thin or conflicting. All titles came from search-result summaries, because no company page could be opened, so re-check each title on the company site or LinkedIn before you write. Personal LinkedIn URLs, where one surfaced verbatim in search, are in the `linkedin_url` column of the CSV. Only six did; the rest say "not found". Where a channel says "not yet found – check company site", the research budget ran out before that company was searched.
+
+**Personal emails and phone numbers were deliberately not collected.** Under the NDPA 2023 a named person's email address or mobile number is personal data. Scraping, guessing or buying it, then using it for an unsolicited pitch, is the kind of processing a privacy and security consultant is supposed to stop. A prospect who notices will reasonably ask how you would handle *their* customers' data. For the same reason, mailboxes named after individuals that appeared in company documents (at Curacel, Bamboo and Afrilearn) and a named DPO's phone number at DrugStoc were left out.
+
+Use three routes instead:
+
+1. **A LinkedIn connection request with a short note** to the named founder or CTO: one passive observation, one regulatory trigger, one fixed-price offer.
+2. **The company's own published inbox**, such as `hello@`, `info@`, `sales@`, or a DPO/privacy mailbox.
+3. **A warm introduction through an accelerator or investor** (YC, Ventures Platform, Techstars, CcHUB, Founders Factory Africa) or a hub event.
+
+**Use security channels only for what they are for.** Published `security@` addresses and vulnerability-disclosure programmes (Paystack, Nomba, Moniepoint, Helium Health, Edves) exist for genuine vulnerability reports. Sending a sales pitch there wastes the triage team's time and burns your reputation with exactly the people you want to impress. A DPO or privacy mailbox (for example Fincra, Grey, Kora, Nomba, Reliance Health, Teesas, uLesson, Helium Health) is a reasonable place for a short, specific offer of NDPA-compliance help, because that is the function it serves.
+
+Two leads from the research notes are deliberately **not** pitch material yet: possible spam pages indexed under one lender's blog subdomain, and a privacy policy that may show a placeholder where the DPO address should be. Both were seen only in search results. **Verify them passively in a browser before mentioning them**, and if they are real, raise them privately and tactfully rather than as a sales hook.
+
+**Leadership changes to know before you write:**
+
+- **Helium Health:** CEO Adegoke Olubusi stepped down around 12 August 2026 and no successor has been named. Co-founder Dimeji Sofowora is the expected lead. Do not address Olubusi as CEO.
+- **uLesson:** Sim Shagaya becomes Executive Chairman on 1 January 2027. Iheanyi Akwitti has been CEO-Designate since June 2026.
+- **Spleet:** the founding CEO was removed in March 2024 over alleged misappropriation. COO Daniela Ajala runs the company. Do not contact the former CEO.
+- **Bumpa:** co-founder and CTO Adetunji Opayele died on 5 March 2025. No successor CTO has been named; contact CEO Kelvin Umechukwu.
+- **Juicyway:** co-founder and COO Justin Ziegler has left. **Paystack:** co-founder and CTO Ezra Olubi exited in 2025.
+- **Raenest:** the third co-founder and CTO is Sodruldeen Mustapha. **Remedial Health:** the COO is Victor Benjamin and the CTO is Chukwudi Emegbue. **Clafiya:** the founder is Jennie Nwokoye.
+- **TruQ:** CEO Williams Fatayo's resignation has been reported, but CB Insights still lists him. **ThriveAgric:** the CEO is disputed. Confirm both before writing.
+- **Kwik Delivery:** its Dutch parent, Africa Delivery Technologies Holding, was declared bankrupt in May 2025. The Nigerian business reportedly continues; verify before any outreach.
+- **Orda** (not on the list): Moniepoint bought its Nigerian operations in March 2026, so any security work there now runs through Moniepoint (tier C). Treat it as low priority.
+
+**Payments, banking & finance infrastructure**
+
+| # | Company | Decision maker(s) & title | Official channel |
+|---|---|---|---|
+| 1 | Duplo | Yele Oyekola – Co-founder & CEO (High); Tunde Akinnuwa – Co-founder & Chief Product Officer (Medium) | hello@tryduplo.com (general; DPO contact per privacy policy); sales@tryduplo.com; contact page |
+| 2 | Juicyway | Ife Johnson – Co-founder & CEO (Medium-High); note: co-founder/COO Justin Ziegler has left, no replacement named | compliance@juicyway.com (compliance); legals@juicyway.com (legal); support@juicyway.com; partner page |
+| 3 | Daya | Tomiwa 'Aleph' Lasebikan – Co-founder, CEO title unconfirmed (High as co-founder / Medium as CEO); Paul Joe – Co-founder & COO (Medium-High) | not yet found – check company site |
+| 4 | Cleva | Tolu Alabi – Co-founder & CEO (Medium); Philip (Adama) Abel – Co-founder & CTO (Medium) | contact@getcleva.com (general); legal@getcleva.com (privacy/data rights, legal) |
+| 5 | Raenest | Victor Alade – Co-founder & CEO (High); Sodruldeen Mustapha – Co-founder & CTO (Medium-High); Richard Oyome – Co-founder & COO (Medium-High) | compliance@raenest.com (DPO); privacy@raenest.com (privacy requests); support@raenest.com; contact page |
+| 6 | Bujeti | Cossi Achille Arouko – Co-founder & CEO (Medium-High); Samy (Paul) Chiba – Co-founder & COO (Low-Medium) | contact@bujeti.com (product, partnerships, support); contact/demo page |
+| 7 | Anchor | Segun Adeyemi – Co-founder & CEO (Medium); Olamide Sobowale – Co-founder (Low-Medium); Gbeke Olufotebi – Co-founder (Low) | hello@getanchor.co (general; privacy-policy contact); compliance page |
+| 8 | Fincra | Wole Ayodele – Co-founder & CEO (High); Gideon Orovwiroro – Co-founder, title unconfirmed (Medium) | dpo@fincra.com (DPO); compliance@fincra.com; legal@fincra.com; contact page |
+| 9 | Maplerad | Obinna Chukwujioke – Co-founder, CEO per 2022 reports (High as co-founder / Medium as CEO); Miracle Anyanwu – Co-founder, CEO & CTO per one profile (Medium-Low) | hello@maplerad.com (general); contact-sales page |
+| 10 | Zone | Obi Emetarom – CEO (High) | info@zonenetwork.com (general); Contact/Talk to Sales page; executives page (check for CTO/CISO) |
+| 11 | Grey | Idorenyin Obong – Co-founder & CEO (High); Femi Aghedo – Co-founder, title unconfirmed (Low) | dpo@grey.co (DPO); hello@grey.co (general) |
+| 12 | Miden | Okiemute 'Dom' Avworhokai – Co-founder & CEO (Medium); Ini Udoh – Co-founder, technical (Medium-Low) | info@miden.co (general); Talk-to-an-expert page |
+| 13 | Kora (Korapay) | Dickson Nsofor – Founder & CEO (Medium) | dpo@korapay.com (DPO); compliance@korapay.com; contact page |
+| 14 | Lenco | Andrew Airelobhegbe – Co-founder & CEO (Medium); Praise Osagie – CTO (Low-Medium); Impact Airelobhegbe – Co-founder & COO (Low-Medium) | support@lenco.co (support; privacy-policy contact) |
+| 15 | Nomba | Yinka Adewale – Co-founder & CEO (Medium-High); Pelumi Aboluwarin – Co-founder & CTO (Medium) | dpo@nomba.com (DPO); security@nomba.com (vulnerability reports only – not for sales) |
+| 16 | Paystack | Shola Akinlade – Co-founder & CEO, The Stack Group (High); note: co-founder/CTO Ezra Olubi exited in 2025, no successor named | dpo@paystack.com (DPO); security@paystack.com and HackerOne VDP (vulnerability reports only – not for sales) |
+| 17 | Flutterwave | Olugbenga 'GB' Agboola – Co-founder & CEO (High); Prashant Kalia – Chief Risk & Compliance Officer (Medium); Muyiwa Olufon – CISO (Low-Medium) | privacy@flutterwavego.com (DPO/privacy); hi@flutterwavego.com (general) |
+| 18 | Moniepoint | Tosin Eniolorunda – Co-founder & Group CEO (High); Felix Ike – Co-founder & CTO (High) | contact page; DPO via privacy policy; Report-a-Vulnerability form (vulnerability reports only – not for sales) |
+
+**Lending & credit**
+
+| # | Company | Decision maker(s) & title | Official channel |
+|---|---|---|---|
+| 19 | Sycamore | Babatunde Akin-Moses – Co-founder & CEO (High) | privacy policy, data-rights page and security page (mailboxes not captured) |
+| 20 | Lendsqr | Adedeji Olowe – Founder & CEO (High) | support@lendsqr.com; contact / Talk to our team page |
+| 21 | CredPal | Fehintolu Olaogun – Co-founder & CEO (Low-Medium); Olorunfemi Jegede – Co-founder & COO (Low) | hello@credpal.com (general; privacy-notice contact) |
+| 22 | Aella Credit | Akin Jones – Founder & Group CEO (Medium-High); Wale (Olawale) Akanbi – Co-founder & CTO (Low-Medium) | compliance@aellacredit.com (DPO per privacy policy; page ~900 days old, re-verify); info@aellamfb.com (general) |
+
+**Savings, wealth & investment**
+
+| # | Company | Decision maker(s) & title | Official channel |
+|---|---|---|---|
+| 23 | Risevest | Eke Urum – Co-founder & CEO (High) | hello@risevest.com (general); privacy policy (privacy mailbox not captured) |
+| 24 | Cowrywise | Razaq Ahmed – Co-founder & CEO (Medium); Edward Popoola – Co-founder & CTO (Low-Medium) | compliance@cowrywise.com (DPO); support@cowrywise.com |
+| 25 | Bamboo | Richmond Bassey – Co-founder & CEO (Medium) | getmisan@investbamboo.com (Data Privacy Officer, Misan app); support page; security page |
+| 26 | Trove | Oluwatomi Solanke – Co-founder & CEO (Medium); Opeyemi Olanipekun – Co-founder & CTO (Low) | not yet found – check company site |
+| 27 | PiggyVest | Somto Ifezue – Co-founder & CEO (Medium-High); Odunayo Eweniyi – Co-founder & COO (Medium-High) | contact@piggyvest.com (general); privacy policy (DPO mailbox not captured) |
+
+**Insurtech & pensiontech**
+
+| # | Company | Decision maker(s) & title | Official channel |
+|---|---|---|---|
+| 28 | Curacel | Henry Mascot – Co-founder & CEO (Medium-High); John (Flash) Dada – Co-founder & CTO (Medium-Low); Muyiwa Ogunleye – Data Protection Officer (Medium) | support@curacel.ai (DPO and legal-rights requests); admin@curacel.ai (privacy and AI policy); contact page |
+| 29 | Awabah | Tunji Andrews – Co-founder & CEO (Medium-High) | support@awabahng.com (support) |
+| 30 | MyCover.ai | Adebowale Banjo – Co-founder & CEO (Low-Medium); Fred Ebho – Co-founder & CTO (Low-Medium) | privacy policy page (mailbox not captured) |
+| 31 | Casava | Bode Pedro – Founder & CEO (Medium); Solabomi Oreagba – COO, appointed Aug 2025 (Medium-High) | hello@casava.co / hello@casava.com (general; confirm current domain) |
+| 32 | PenSphere | none found (directors could be confirmed via CAC registry search) | not yet found – check company site (pensphere.ng) |
+
+**Crypto & stablecoin**
+
+| # | Company | Decision maker(s) & title | Official channel |
+|---|---|---|---|
+| 33 | Roqqu | Benjamin (Eseoghene) Onomor – Founder & CEO (High) | not yet found – check company site |
+| 34 | Blockradar | Abdulfatai Suleiman – Co-founder & CEO (Medium-High); Morgan Williams – Co-founder & COO (Medium-High) | not yet found – check company site |
+| 35 | Busha | Michael Adeyeri – Co-founder & CEO (High); Moyosore Sodipo – Co-founder, COO & CPO (Medium) | not yet found – check company site |
+| 36 | Quidax | Buchi Okoro – Co-founder & CEO (Medium-Low); Morris Ebieroma – Co-founder & CIO (Low) | not yet found – check company site |
+| 37 | Breet | Usman Balogun – Co-founder & Managing Director (Medium); Kayode Faturoti – Co-founder & CEO (Low-Medium) | not yet found – check company site |
+| 38 | Yellow Card | Chris Maurice – Co-founder & CEO (High) | not yet found – check company site |
+
+**Logistics, mobility & commerce**
+
+| # | Company | Decision maker(s) & title | Official channel |
+|---|---|---|---|
+| 39 | Gigmile | Kayode Adeyinka – Co-founder & CEO (High); Samuel Esiri – Co-founder & COO (Medium) | none found in search – check company site (gigmile.com) |
+| 40 | Heyfood | Taiwo Akinropo – Founder & CEO (Medium); Demilade Odetara – Co-founder (Medium) | none found in search – check company site (heyfood.africa links Privacy/Terms pages) |
+| 41 | Treepz | Onyeka Akumah – Co-founder & CEO (High) | not yet found – check company site |
+| 42 | Shipbubble | Jordan Ajibola – Co-founder & CEO (Medium); Ayodeji Abon – Co-founder & CTO (Medium) | not yet found – check company site |
+| 43 | Topship | Moses Enenwali – Co-founder & CEO (Medium); Junaid Babatunde – Co-founder & CTO (Medium) | not yet found – check company site |
+| 44 | Fez Delivery | Seun Alley – Founder & CEO (Medium) | not yet found – check company site |
+| 45 | Bumpa | Kelvin Umechukwu – Co-founder & CEO (Medium); note: no CTO named since Mar 2025 | not yet found – check company site |
+| 46 | eDryv | Ahmad Damcida – Principal/founder, Folti Technologies; CEO title unconfirmed (Medium) | not yet found – check company site |
+| 47 | Haul247 | Sehinde Afolayan – Co-founder & CEO (High); Tobi (Toby) Obasa – Co-founder & CTO/CBO (Medium); Akindele Philips – Co-founder (Low) | not yet found – check company site |
+| 48 | Renda | Ope Onaboye – Co-founder, CEO unstated (Medium); Bimbo Onaboye – Co-founder (Medium) | not yet found – check company site |
+| 49 | Sendbox | Emotu Balogun – Co-founder & CEO (Medium); Olusegun Afolahan – Co-founder, COO per one 2026 site (Low) | not yet found – check company site |
+| 50 | SGX Mobility | Dele Awofala – Executive, title unstated (Low); CEO/founder not identified | not yet found – check company site |
+| 51 | Vendease | Tunde Kara – Co-founder & CEO (Medium); (O)Wale Oyepeju – Co-founder & CTO (Medium) | not yet found – check company site |
+| 52 | Kwik Delivery | Romain Poirot-Lellig – Founder & CEO (Low) | not yet found – check company site; verify company status first |
+| 53 | TruQ | Williams Fatayo – Co-founder; CEO status disputed, resignation reported (Low); Foluso Ojo – Co-founder & COO (Low) | not yet found – check company site; confirm leadership first |
+| 54 | Shuttlers | Damilola Olokesusi – Co-founder & CEO (High) | not yet found – check company site |
+| 55 | Chowdeck | Femi (Babafemi) Aluko – Co-founder & CEO (High); Olumide Ojo – Co-founder & CTO (High); Lanre Yusuf – Co-founder & COO (Medium) | legal@chowdeck.com (DPO); hello@chowdeck.com (general); press@chowdeck.com |
+| 56 | TradeDepot | Onyekachi (Kachi) Izukanne – Co-founder & CEO (High); Michael Ukpong – Co-founder, CTO in earlier coverage (Low) | not yet found – check company site |
+| 57 | LagRide | Jubril Arogundade – Acting Managing Director (Medium); Chief Diana Chen – Chairman, CIG Group & LagRide (Medium); Mildred Ekanem – Executive Director (Low) | not yet found – check company site; state PPP – use formal procurement |
+
+**Healthtech**
+
+| # | Company | Decision maker(s) & title | Official channel |
+|---|---|---|---|
+| 58 | Platos Health | Oladimeji Joseph Fakayode – Founder & CEO (High) | compliance@platoshealth.com (Privacy Officer); support@platoshealth.com |
+| 59 | Healthtracka | Ifeoluwa Dare-Johnson – Founder & CEO (High); Victor Amusan – Co-founder (Low) | support@healthtracka.com (old snapshot); bookings@healthtracka.com |
+| 60 | WellaHealth | Dr Ikpeme Neto – Founder & CEO (High) | contact@wellahealth.com (general and data rights); group@wellahealth.com (group plans); contact page |
+| 61 | MyItura | Opeyemi (Shina) Arogundade – Founder & CEO (High); Adeoluwa Ogunye – Co-founder & CTO (Medium) | info@myitura.com (general); support@myitura.com; data-protection contact in privacy policy |
+| 62 | Remedial Health | Samuel Okwuada – Co-founder & CEO (Medium); Victor Benjamin – Co-founder & COO (Medium); Chukwudi Emegbue – CTO (Low) | info@remedialhealth.com (general; named Data Protection Contact) |
+| 63 | Lifestores Healthcare | Bryan Mezue – Co-founder & CEO (Medium); Andrew Garza – Co-founder (Low) | none found in search – check company site |
+| 64 | Clafiya | Jennie Nwokoye – Founder, CEO in earlier coverage (Low) | hi@clafiya.com (general) |
+| 65 | Intron Health | Dr Tobi Olatunji – Founder & CEO (Medium) | none found in search – check company site (intron.health about page) |
+| 66 | DrugStoc | Chibuzo Opara – Co-founder & CEO (Medium); Cynthiamary Unaka – Data Protection Officer (Medium) | info@drugstoc.com (general); DPO via privacy notice page |
+| 67 | 10mg Health | Christian Nwachukwu – Founder & CEO (High) | none found in search – check company site (10mghealth.com is an unrelated blog – do not use) |
+| 68 | Helium Health | Dimeji Sofowora – Co-founder (formerly CFO), expected to take an expanded leadership role (Medium); note: CEO Adegoke Olubusi stepped down ~Aug 2026, no successor named – do not address him as CEO | dpco@heliumhealth.com (DPO); team@heliumhealth.com (sales); security@heliumhealth.com (security incidents only – not for sales) |
+| 69 | Reliance Health | Femi Kuti – Co-founder & CEO (Medium); Matthew Mayaki – Co-founder, SVP Product & Design (Low) | dpo@getreliancehealth.com (DPO); hellonigeria@getreliancehealth.com (general, Nigeria) |
+
+**Edtech**
+
+| # | Company | Decision maker(s) & title | Official channel |
+|---|---|---|---|
+| 70 | Edves | Dimeji Falana – Co-founder & CEO (High); Dare Adebayo – Co-founder, COO in earlier coverage (Low) | hello@edves.net (privacy requests); sales@edves.net; security@edves.net (breach/security reports only – not for sales) |
+| 71 | Teesas | Osayi Izedonmwen – Founder & CEO (Medium) | dpo@teesas.app (DPO); info@teesas.com (general); sales@teesas.com |
+| 72 | Tespire | Abdulkadir Suleiman Lapai – Founder & CEO (Medium); Umar Madugu – Co-founder & CTO (Medium) | none found in search – check company site |
+| 73 | The VARLC Project | not found | none found in search – check company site |
+| 74 | Afrilearn | Isaac Oladipupo – Co-founder & CEO (High); Gabriel Olatunji-Legend – Co-founder (Medium) | hello@myafrilearn.com (general); contact page |
+| 75 | Klas | Nathan Nwachuku – Co-founder & CEO (Medium); Lekan Adejumo – Co-founder & CTO (Medium) | none found in search – check company site (tryklas.com) |
+| 76 | Schoolable | Henry Chibuzo Nnalue – Co-founder & CEO (Medium); Angela Essien – Co-founder (Low) | hey@schoolable.co (support and data protection); accounts@schoolable.co (partnerships) |
+| 77 | EduPali | Adetola Adele – Co-founder & CEO, FastaMoni (EduPali's parent) (Low) | none found in search – check company site (domain not identified) |
+| 78 | AltSchool Africa | Adewale Yusuf – Co-founder & CEO (High); Emmanuel Ogunsola – Head of Product & Engineering (Low) | Data Protection Office via privacy policy; contact page |
+| 79 | Utiva | Eyitayo Ogunmola – Founder & CEO (Medium) | info@utiva.io (partnerships and corporate training) |
+| 80 | uLesson | Iheanyi Akwitti – CEO-Designate, Group CEO from 1 Jan 2027 (High); Sim Shagaya – Founder, Group CEO until 31 Dec 2026 then Executive Chairman (High) | dpo@ulesson.com (DPO); help@ulesson.com (general) |
+
+**HR, B2B SaaS, AI & creator platforms**
+
+| # | Company | Decision maker(s) & title | Official channel |
+|---|---|---|---|
+| 81 | PaidHR | Seye Bandele – Co-founder & CEO (High); Lekan Omotosho – Co-founder & CTO (High) | none found in search – check company site (paidhr.co) |
+| 82 | Awarri | Silas Adekunle – Co-founder & CEO (High); Eniola Edun – Co-founder (Medium) | not yet found – check company site |
+| 83 | Spitch | Temiloluwa (Temi) Babalola – Founder & CEO (High) | not yet found – check company site |
+| 84 | Selar | Douglas Kendyson – Founder & CEO (High) | not yet found – check company site |
+| 85 | SeamlessHR (Seamless Technologies) | Dr Emmanuel Okeleji – Co-founder & CEO (High); Deji Lana – Co-founder & CTO (High) | not yet found – check company site |
+| 86 | Prembly | Lanre Ogungbe – Co-founder & Group CEO (High); Marita Mutemi – Group CFO & CEO, Prembly East Africa (Medium) | not yet found – check company site |
+| 87 | Termii | Emmanuel Gbolade – Co-founder & CEO (High); Ayomide Awe – Co-founder (Low) | not yet found – check company site |
+| 88 | Seso Global | Daniel Bloch – CEO, Seso Africa group (Low); Phillip Jarman – Co-founder (Low) | not yet found – check company site |
+| 89 | Propel | Sunkanmi Ola – Co-founder & CEO (Medium); Seun Owolabi – Co-founder (Low); Abel Agoi – Co-founder (Low) | not yet found – check company site |
+| 90 | Mainstack | Ayobami Oyaleke – Co-founder & CEO (High); Olamide Akinola – Co-founder & CPTO (Medium) | not yet found – check company site |
+
+**Agritech, energy & proptech**
+
+| # | Company | Decision maker(s) & title | Official channel |
+|---|---|---|---|
+| 91 | Winich Farms | Riches Attai – Co-founder & CEO (Medium); Akan Itak Attai – Founder, COO (Low) | not yet found – check company site |
+| 92 | PowerLabs | Tobechukwu (Tobe) Arize – Co-founder & CEO (High); David Adebiyi – Co-founder & CTO (High) | not yet found – check company site |
+| 93 | Earthbond | Chidalu Onyenso – Founder & CEO (Medium) | not yet found – check company site |
+| 94 | Salpha Energy | Sandra Chukwudozie – Founder & CEO (High) | not yet found – check company site |
+| 95 | Arnergy | Femi Adeyemo – Founder & CEO (High) | not yet found – check company site (arnergy.com) |
+| 96 | Crop2Cash | Michael Ogundare – Founder & CEO (High) | not yet found – check company site |
+| 97 | Releaf | Ikenna Nzewi – Co-founder & CEO (Medium); Uzoma Ayogu – Co-founder & CTO (Low) | not yet found – check company site |
+| 98 | Agriarche | Deina Mayaki – Founder/co-founder & CEO (High); Nancy Chinemerem Nwaka – Co-founder & Director (Low) | not yet found – check company site |
+| 99 | Spleet | Daniela Ajala – COO and co-founder, runs the company (Low); note: former CEO removed Mar 2024 – do not contact | not yet found – check company site |
+| 100 | ThriveAgric | Uka Eje – Co-founder & CEO, disputed (Adia Sowho earlier reported as interim CEO) (Low) | not yet found – check company site |
+
 ## Each sector has its own trigger for the first message
 
 The table gives the "what". The sector patterns give the "why now", and that is what makes a cold message worth opening.
@@ -298,12 +477,13 @@ In-scope findings on Paystack's HackerOne programme give public, checkable proof
 - **No security.txt, VDP or bug-bounty status was checked** for any company. The only confirmed programmes are Paystack's and Moniepoint's pages, which came up in search.
 - **Websites and domains are unverified.**
 - **Headcounts are almost entirely unverified.** The only sourced figures are Chowdeck (~259), Heyfood (~40), Crop2Cash (27), Prembly (~80), uLesson and the large logistics firms.
-- **Founder LinkedIn and X handles were not collected at all.**
-- **No contact emails were found, and none were invented.**
+- **Most personal LinkedIn URLs were not found.** Only six surfaced verbatim in search results (Zone, Fez Delivery, Chowdeck, WellaHealth, Schoolable, Winich Farms), and each still needs an identity check. No X handles were found. No URLs were built from names.
+- **Official contact channels are missing for 54 companies.** The search budget ran out before most logistics, crypto, agri, energy and SaaS companies were searched, and a few searched sites published nothing usable. Those rows say "not yet found – check company site" or "none found in search". The channels that were found are company-published role mailboxes and pages seen in search snippets; none were opened, and some privacy pages are years old.
+- **Decision-maker titles need re-verification.** About a third of the people listed rest on undated or pre-2025 sources, and several companies changed leadership in 2024–26. No personal emails or phone numbers were collected, and none were guessed.
 
 Check all of this by hand before outreach. Several other facts rest on search-engine summaries of articles that could not be fetched, and aggregator figures from Tracxn, PitchBook and Crunchbase often conflict. For example, Kora's funding is given as $400K or $20K, and Shipbubble's as $47.9K or $70K.
 
-Twenty-four companies carry a "Low ⚑ check" flag because no 2025–26 activity was found. Treat them as leads, not targets. The Naira prices are estimates, not market data.
+Twenty companies carry a "Low ⚑ check" flag because no 2025–26 activity was found. (Casava, Shuttlers, Agriarche and 10mg Health lost the flag after the decision-maker research found 2025–26 activity.) Treat them as leads, not targets. The Naira prices are estimates, not market data.
 
 Some regulatory details are also unconfirmed:
 
@@ -318,4 +498,4 @@ Get a lawyer's view before relying on any of them in a contract or a pitch.
 
 The opportunity here is unusual. Nigerian regulators have spent 2025–26 creating paperwork obligations faster than startups can staff for them. GAID audits, 72-hour reporting, FCCPC registration, SEC registration under ISA 2025 and bank vendor-risk reviews all land on companies with 10 to 80 staff and no security lead. That makes documentation the beginner's natural advantage. Policies, DPIAs, questionnaire answers and DMARC records are low-risk and fixed-price, and they produce evidence a client can show. A senior pentester's skills matter less here than reliability and legal care.
 
-The list is perishable. Three of the 2026 shutdowns (Chimoney, LazerPay, Brass) happened within months of this research, and a quarter of the prospects lack fresh proof of life. So the most valuable habit is not a better pitch. It is re-checking status, publishing passive and permission-safe findings as content, and turning the first three to five authorised engagements into case studies that open the next twenty doors.
+The list is perishable. Three of the 2026 shutdowns (Chimoney, LazerPay, Brass) happened within months of this research, and a fifth of the prospects lack fresh proof of life. So the most valuable habit is not a better pitch. It is re-checking status, publishing passive and permission-safe findings as content, and turning the first three to five authorised engagements into case studies that open the next twenty doors.
