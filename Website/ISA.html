@@ -1,0 +1,2416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>kingsleyobi.com ��� Frontend ISA</title>
+<meta name="description" content="Frontend ISA for kingsleyobi.com: templates, components, design tokens, responsive and accessibility requirements, and acceptance criteria.">
+<style>
+:root {
+  --bg: #ffffff; --surface: #f6f7f9; --text: #1a1d23; --text-muted: #5b6270;
+  --border: #e3e6eb; --accent: #1f5fbf; --accent-strong: #174a96; --code-bg: #f3f4f6;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1115; --surface: #171a21; --text: #e6e8ec; --text-muted: #a3a9b5;
+    --border: #2a2f3a; --accent: #7fb0ff; --accent-strong: #a9c9ff; --code-bg: #161a22;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 1rem; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 1rem/1.65 var(--font-sans); }
+.wrap { max-width: calc(80rem + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 1rem; top: 1rem; background: var(--bg); padding: .5rem 1rem; border: 2px solid var(--accent); z-index: 10; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.doc-header { border-bottom: 1px solid var(--border); }
+.doc-kicker { margin: 0; padding-block: .75rem; color: var(--text-muted); font-size: .875rem; }
+.layout { display: block; padding-block: 2rem 4rem; }
+@media (min-width: 64rem) {
+  .layout { display: grid; grid-template-columns: 16rem minmax(0, 1fr); gap: 3rem; }
+  .toc { position: sticky; top: 1rem; align-self: start; max-height: calc(100vh - 2rem); overflow-y: auto; }
+}
+.toc { font-size: .875rem; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-bottom: 2rem; background: var(--surface); }
+.toc h2 { border-top: 0; padding-top: 0; font-size: .8125rem; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 .5rem; color: var(--text-muted); }
+.toc ul { list-style: none; padding-left: 0; margin: 0; }
+.toc ul ul { padding-left: .875rem; }
+.toc li { margin: .2rem 0; }
+.toc a { text-decoration: none; }
+main { min-width: 0; max-width: 56rem; }
+main:focus { outline: none; }
+h1, h2, h3, h4 { line-height: 1.25; letter-spacing: -0.01em; text-wrap: balance; }
+h1 { font-size: clamp(1.875rem, 1.5rem + 1.6vw, 2.5rem); margin-top: 0; }
+h2 { font-size: 1.625rem; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+h3 { font-size: 1.25rem; margin-top: 2rem; }
+a { color: var(--accent); text-underline-offset: .2em; }
+a:hover { color: var(--accent-strong); }
+code { font-family: var(--font-mono); font-size: .875em; background: var(--code-bg); padding: .1em .3em; border-radius: 4px; }
+pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; overflow-x: auto; line-height: 1.5; }
+pre code { background: none; padding: 0; font-size: .8125rem; }
+table { display: block; overflow-x: auto; border-collapse: collapse; font-size: .875rem; margin: 1.25rem 0; max-width: 100%; }
+th, td { border: 1px solid var(--border); padding: .45rem .65rem; text-align: left; vertical-align: top; }
+thead th { background: var(--surface); }
+blockquote { border-left: 3px solid var(--accent); margin-left: 0; padding-left: 1rem; color: var(--text-muted); }
+hr { border: 0; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+.doc-footer { border-top: 1px solid var(--border); color: var(--text-muted); font-size: .875rem; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+@media print { .toc, .skip-link, .doc-header { display: none; } .layout { display: block; } }</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="doc-header">
+  <div class="wrap">
+    <p class="doc-kicker">Ideal State Artifact · generated from <code>ISA.md</code></p>
+  </div>
+</header>
+<div class="wrap layout">
+<nav id="TOC" class="toc" aria-labelledby="toc-title">
+  <h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#kingsleyobicom--frontend-ideal-state-artifact"
+id="toc-kingsleyobicom--frontend-ideal-state-artifact">kingsleyobi.com —
+Frontend Ideal State Artifact</a>
+<ul>
+<li><a href="#summary" id="toc-summary">Summary</a></li>
+<li><a href="#1-scope-and-reverse-engineering-methodology"
+id="toc-1-scope-and-reverse-engineering-methodology">1. Scope and
+reverse-engineering methodology</a></li>
+<li><a href="#2-pages-and-templates-inspected"
+id="toc-2-pages-and-templates-inspected">2. Pages and templates
+inspected</a></li>
+<li><a href="#3-site-wide-layout-and-dom-hierarchy"
+id="toc-3-site-wide-layout-and-dom-hierarchy">3. Site-wide layout and
+DOM hierarchy</a></li>
+<li><a href="#4-page-template-specifications"
+id="toc-4-page-template-specifications">4. Page-template
+specifications</a></li>
+<li><a href="#5-html-element-and-semantic-markup-requirements"
+id="toc-5-html-element-and-semantic-markup-requirements">5. HTML element
+and semantic markup requirements</a></li>
+<li><a href="#6-reusable-component-inventory"
+id="toc-6-reusable-component-inventory">6. Reusable component
+inventory</a></li>
+<li><a href="#7-component-structure-and-variants"
+id="toc-7-component-structure-and-variants">7. Component structure and
+variants</a></li>
+<li><a href="#8-css-and-design-token-specifications"
+id="toc-8-css-and-design-token-specifications">8. CSS and design-token
+specifications</a></li>
+<li><a href="#9-responsive-layout-requirements"
+id="toc-9-responsive-layout-requirements">9. Responsive layout
+requirements</a></li>
+<li><a href="#10-navigation-and-interactive-component-requirements"
+id="toc-10-navigation-and-interactive-component-requirements">10.
+Navigation and interactive-component requirements</a></li>
+<li><a href="#11-accessibility-requirements"
+id="toc-11-accessibility-requirements">11. Accessibility
+requirements</a></li>
+<li><a href="#12-proposed-component-hierarchy-for-kingsleyobicom"
+id="toc-12-proposed-component-hierarchy-for-kingsleyobicom">12. Proposed
+component hierarchy for kingsleyobi.com</a></li>
+<li><a href="#13-recommended-project-and-source-file-structure"
+id="toc-13-recommended-project-and-source-file-structure">13.
+Recommended project and source-file structure</a></li>
+<li><a href="#14-testable-frontend-acceptance-criteria"
+id="toc-14-testable-frontend-acceptance-criteria">14. Testable frontend
+acceptance criteria</a></li>
+<li><a
+href="#15-evidence-references-assumptions-and-unresolved-technical-questions"
+id="toc-15-evidence-references-assumptions-and-unresolved-technical-questions">15.
+Evidence references, assumptions, and unresolved technical
+questions</a></li>
+<li><a href="#change-log" id="toc-change-log">Change log</a></li>
+</ul></li>
+</ul>
+</nav>
+<main id="main" tabindex="-1">
+<section id="kingsleyobicom--frontend-ideal-state-artifact"
+class="level1">
+<h1>kingsleyobi.com — Frontend Ideal State Artifact</h1>
+<p><strong>Version</strong> 0.1.0 · <strong>Date</strong> 2026-10-29 ·
+<strong>Status</strong> ready to build; checking against the reference
+site is still to do (see §1.3 and §15)</p>
+<section id="summary" class="level2">
+<h2>Summary</h2>
+<p>This ISA is the canonical frontend specification for <strong><a
+href="https://kingsleyobi.com">https://kingsleyobi.com</a></strong>: a
+fast, static, long-form personal website with nine page templates, 28
+reusable components, one token-based design system with light and dark
+themes, and 40 testable acceptance criteria (§14). It defines structure,
+markup, components, styling and behaviour. It does not define written
+content, branding copy or personal positioning.</p>
+<p>Done means: every template in §4 renders from the components in §6–7,
+uses only the tokens in §8, and passes every acceptance criterion in §14
+on the deployed site.</p>
+<hr />
+</section>
+<section id="1-scope-and-reverse-engineering-methodology"
+class="level2">
+<h2>1. Scope and reverse-engineering methodology</h2>
+<section id="11-scope" class="level3">
+<h3>1.1 Scope</h3>
+<p>In scope: page templates, DOM hierarchy, semantic markup, reusable
+components, CSS and design tokens, responsive behaviour, navigation,
+interactivity, accessibility, source-file structure and acceptance
+tests.</p>
+<p>Out of scope: the reference site's author's philosophy, identity,
+writing system and content model; any copying of the reference site's
+text, images, logos, fonts or code; and building the site itself (this
+document comes first).</p>
+</section>
+<section id="12-intended-method" class="level3">
+<h3>1.2 Intended method</h3>
+<p>The brief specifies a direct inspection of <a
+href="https://danielmiessler.com">https://danielmiessler.com</a>:</p>
+<ol type="1">
+<li>Discover page types from its navigation, <code>robots.txt</code> and
+<code>sitemap.xml</code>.</li>
+<li>For each page type, capture three separate kinds of evidence:
+<ul>
+<li><strong>Page source</strong>: the server HTML response, before
+scripts run.</li>
+<li><strong>Rendered DOM</strong>: the document after scripts run,
+captured in headless Chromium.</li>
+<li><strong>Computed styles</strong>: <code>getComputedStyle</code>
+values for key elements at 1440 px and 390 px viewport widths, with
+screenshots at each width.</li>
+</ul></li>
+<li>Record only observed components, and translate the patterns into
+original specifications.</li>
+</ol>
+</section>
+<section id="13-what-actually-happened-and-how-to-read-this-document"
+class="level3">
+<h3>1.3 What actually happened, and how to read this document</h3>
+<p>The live inspection <strong>could not be performed</strong>. This
+session's network policy refused every connection to
+<code>danielmiessler.com</code> (an HTTPS CONNECT returned 403 at the
+egress proxy, and the fetch tool failed DNS resolution). The principal
+asked for the ISA to be produced anyway so the build can start.</p>
+<p>So the specification is an <strong>original design</strong> built on
+established, standards-based patterns for minimalist long-form personal
+sites. <strong>None of its structural or visual values were taken from
+the reference site.</strong> Every requirement carries an evidence
+tag:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Tag</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>[O]</strong></td>
+<td>Observed on the reference site. Only one fact qualifies, via a
+search-engine index (§2, §15).</td>
+</tr>
+<tr class="even">
+<td><strong>[R]</strong></td>
+<td>Original recommendation: a concrete design decision made for
+kingsleyobi.com. Binding for the build.</td>
+</tr>
+<tr class="odd">
+<td><strong>[V]</strong></td>
+<td>Recommendation to verify against the reference site once access
+exists (§15.4). Binding for the build until the check is done; may be
+revised afterwards.</td>
+</tr>
+</tbody>
+</table>
+<p><code>RESEARCH.md</code> is deferred until the inspection can run.
+§15.4 gives the protocol that will produce it.</p>
+<hr />
+</section>
+</section>
+<section id="2-pages-and-templates-inspected" class="level2">
+<h2>2. Pages and templates inspected</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Reference page type</th>
+<th>Intended source</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Homepage</td>
+<td><code>https://danielmiessler.com/</code></td>
+<td>Not inspected: network blocked</td>
+</tr>
+<tr class="even">
+<td>Article (individual post)</td>
+<td>e.g. <a
+href="https://danielmiessler.com/p/considering-using-danielmiessler-com-instead-of-dmiessler-com">/p/considering-using-danielmiessler-com-instead-of-dmiessler-com</a></td>
+<td>Not inspected. <strong>[O]</strong> The search index shows posts are
+served under a <code>/p/&lt;slug&gt;</code> path</td>
+</tr>
+<tr class="odd">
+<td>Blog archive / listing</td>
+<td>discover via nav or sitemap</td>
+<td>Not inspected</td>
+</tr>
+<tr class="even">
+<td>About / standard page</td>
+<td>discover via nav or sitemap</td>
+<td>Not inspected</td>
+</tr>
+<tr class="odd">
+<td>Projects listing / detail</td>
+<td>discover via nav or sitemap</td>
+<td>Not inspected</td>
+</tr>
+<tr class="even">
+<td>Category / tag archive</td>
+<td>discover via nav or sitemap</td>
+<td>Not inspected</td>
+</tr>
+<tr class="odd">
+<td>Search / navigation UI</td>
+<td>discover via header</td>
+<td>Not inspected</td>
+</tr>
+<tr class="even">
+<td><code>robots.txt</code>, <code>sitemap.xml</code></td>
+<td>site root</td>
+<td>Not fetched</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The only observed fact is the <code>/p/&lt;slug&gt;</code>
+article URL pattern [O].</strong> It is recorded as evidence only and
+does not decide kingsleyobi.com's URL design (§4.9 uses
+<code>/writing/&lt;slug&gt;/</code>).</p>
+<hr />
+</section>
+<section id="3-site-wide-layout-and-dom-hierarchy" class="level2">
+<h2>3. Site-wide layout and DOM hierarchy</h2>
+<section id="31-layout-model-r" class="level3">
+<h3>3.1 Layout model [R]</h3>
+<ul>
+<li>A single-column, centred, reading-first layout. Content width is set
+by role, not by page:
+<ul>
+<li><code>--w-prose</code> for running text.</li>
+<li><code>--w-wide</code> for listings, cards and wide figures.</li>
+<li><code>--w-page</code> for the header and footer frame.</li>
+</ul></li>
+<li>The header and footer are identical on every template. Only
+<code>&lt;main&gt;</code> varies.</li>
+<li>No sidebars at any width. The article table of contents sits inline
+on narrow screens and becomes a sticky side rail only at ≥ 75 rem
+(§9).</li>
+</ul>
+</section>
+<section id="32-site-wide-dom-tree-r" class="level3">
+<h3>3.2 Site-wide DOM tree [R]</h3>
+<pre class="text"><code>html[lang=&quot;en&quot;][data-theme]
+└── body.site
+    ├── a.skip-link[href=&quot;#main&quot;]
+    ├── header.site-header                  (banner landmark)
+    │   └── div.container.container--page
+    │       ├── a.site-brand[href=&quot;/&quot;]       (wordmark text, aria-label=&quot;Kingsley Obi — home&quot;)
+    │       ├── nav.primary-nav[aria-label=&quot;Primary&quot;]
+    │       │   ├── button.nav-toggle[aria-expanded][aria-controls=&quot;primary-menu&quot;]  (&lt; 40rem only)
+    │       │   └── ul#primary-menu.primary-nav__list
+    │       │       └── li &gt; a.primary-nav__link[aria-current=&quot;page&quot;?]
+    │       └── div.header-actions
+    │           ├── a.icon-button[href=&quot;/search/&quot;][aria-label=&quot;Search&quot;]
+    │           └── button.theme-toggle[aria-pressed]
+    ├── main#main.site-main[tabindex=&quot;-1&quot;]   (main landmark; template-specific)
+    └── footer.site-footer                   (contentinfo landmark)
+        └── div.container.container--page
+            ├── nav.footer-nav[aria-label=&quot;Footer&quot;] &gt; ul &gt; li &gt; a
+            ├── ul.social-links &gt; li &gt; a[aria-label]
+            └── p.site-footer__legal  (© year, licence, RSS link)</code></pre>
+</section>
+<section id="33-container-primitive-r" class="level3">
+<h3>3.3 Container primitive [R]</h3>
+<pre class="html"><code>&lt;div class=&quot;container container--prose&quot;&gt;…&lt;/div&gt;   &lt;!-- max-width: var(--w-prose) --&gt;
+&lt;div class=&quot;container container--wide&quot;&gt;…&lt;/div&gt;    &lt;!-- max-width: var(--w-wide)  --&gt;
+&lt;div class=&quot;container container--page&quot;&gt;…&lt;/div&gt;    &lt;!-- max-width: var(--w-page)  --&gt;</code></pre>
+<p>Every container gets <code>margin-inline: auto</code> and
+<code>padding-inline: var(--gutter)</code>. Containers never nest inside
+one another. A wide element inside prose uses the
+<code>.bleed-wide</code> utility (§8.7).</p>
+<hr />
+</section>
+</section>
+<section id="4-page-template-specifications" class="level2">
+<h2>4. Page-template specifications</h2>
+<p>All templates share <code>SiteHeader</code>, <code>SiteFooter</code>,
+<code>SkipLink</code> and the <code>BaseLayout</code> document shell
+(§12). Each row below lists the components unique to that template.</p>
+<section id="41-template-summary-r" class="level3">
+<h3>4.1 Template summary [R]</h3>
+<table>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Template</th>
+<th>URL pattern</th>
+<th><code>&lt;main&gt;</code> children (in order)</th>
+<th>Unique components</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1</td>
+<td>Home</td>
+<td><code>/</code></td>
+<td>Hero · Recent writing · Featured projects · Contact CTA</td>
+<td><code>Hero</code>, <code>SectionHeader</code>,
+<code>CTABlock</code></td>
+</tr>
+<tr class="even">
+<td>T2</td>
+<td>Standard page</td>
+<td><code>/about/</code>, <code>/now/</code>, <code>/contact/</code>,
+<code>/colophon/</code></td>
+<td>PageHeader · Prose</td>
+<td>none (base only)</td>
+</tr>
+<tr class="odd">
+<td>T3</td>
+<td>Writing archive</td>
+<td><code>/writing/</code>, <code>/writing/page/&lt;n&gt;/</code></td>
+<td>PageHeader · TopicFilter · PostList · Pagination</td>
+<td><code>PostListItem</code>, <code>Pagination</code>,
+<code>TopicFilter</code></td>
+</tr>
+<tr class="even">
+<td>T4</td>
+<td>Article</td>
+<td><code>/writing/&lt;slug&gt;/</code></td>
+<td>ArticleHeader · TOC · Prose · ArticleFooter · RelatedPosts ·
+PrevNext</td>
+<td><code>ArticleHeader</code>, <code>ArticleMeta</code>,
+<code>TOC</code>, <code>CodeBlock</code>, <code>Callout</code>,
+<code>Figure</code>, <code>RelatedPosts</code>,
+<code>PrevNext</code></td>
+</tr>
+<tr class="odd">
+<td>T5</td>
+<td>Projects listing</td>
+<td><code>/projects/</code></td>
+<td>PageHeader · ProjectGrid</td>
+<td><code>ProjectCard</code></td>
+</tr>
+<tr class="even">
+<td>T6</td>
+<td>Project detail</td>
+<td><code>/projects/&lt;slug&gt;/</code></td>
+<td>Breadcrumb · ProjectHeader · Prose · ProjectFacts ·
+RelatedPosts</td>
+<td><code>Breadcrumb</code>, <code>ProjectHeader</code>,
+<code>ProjectFacts</code></td>
+</tr>
+<tr class="odd">
+<td>T7</td>
+<td>Topic archive</td>
+<td><code>/topics/</code>, <code>/topics/&lt;topic&gt;/</code></td>
+<td>PageHeader · PostList (or TopicIndex) · Pagination</td>
+<td><code>TopicIndex</code></td>
+</tr>
+<tr class="even">
+<td>T8</td>
+<td>Search</td>
+<td><code>/search/</code></td>
+<td>PageHeader · SearchBox · SearchResults</td>
+<td><code>SearchBox</code>, <code>SearchResults</code></td>
+</tr>
+<tr class="odd">
+<td>T9</td>
+<td>Not found</td>
+<td><code>/404.html</code></td>
+<td>PageHeader · Prose · SearchBox · link home</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p>Machine endpoints: <code>/rss.xml</code>,
+<code>/sitemap-index.xml</code>, <code>/robots.txt</code> [R].</p>
+</section>
+<section id="42-t1-home-r" class="level3">
+<h3>4.2 T1 Home [R]</h3>
+<pre class="text"><code>main#main.site-main.template-home
+├── section.hero[aria-labelledby=&quot;hero-title&quot;]  &gt; div.container--wide
+│   ├── h1#hero-title.hero__title
+│   ├── p.hero__lede
+│   └── div.hero__actions &gt; a.button.button--primary + a.button.button--ghost
+├── section.home-section[aria-labelledby=&quot;recent-title&quot;] &gt; div.container--wide
+│   ├── header.section-header &gt; h2#recent-title + a.section-header__more
+│   └── ol.post-list &gt; li.post-list-item × 5
+├── section.home-section[aria-labelledby=&quot;projects-title&quot;] &gt; div.container--wide
+│   ├── header.section-header &gt; h2#projects-title + a.section-header__more
+│   └── ul.card-grid &gt; li &gt; article.project-card × 3
+└── section.cta-block[aria-labelledby=&quot;cta-title&quot;] &gt; div.container--prose</code></pre>
+<p>Variation: if there are no projects, the projects section is omitted
+entirely. It never renders empty.</p>
+</section>
+<section id="43-t2-standard-page-r" class="level3">
+<h3>4.3 T2 Standard page [R]</h3>
+<pre class="text"><code>main#main.site-main.template-page
+└── article.page &gt; div.container--prose
+    ├── header.page-header &gt; h1.page-header__title + p.page-header__lede?
+    └── div.prose  (Markdown-rendered body)</code></pre>
+</section>
+<section id="44-t3-writing-archive-r" class="level3">
+<h3>4.4 T3 Writing archive [R]</h3>
+<pre class="text"><code>main#main.site-main.template-archive
+└── div.container--wide
+    ├── header.page-header &gt; h1 + p.page-header__lede + p.page-header__count
+    ├── nav.topic-filter[aria-label=&quot;Filter by topic&quot;] &gt; ul &gt; li &gt; a.tag
+    ├── ol.post-list[reversed]  &gt; li.post-list-item × 20
+    └── nav.pagination[aria-label=&quot;Pagination&quot;]</code></pre>
+<p>Variation: if there are 20 posts or fewer, pagination is not
+rendered. Alternative layout: <code>post-list--grouped</code> adds
+<code>h2.post-list__year</code> group headings by year.</p>
+</section>
+<section id="45-t4-article-r" class="level3">
+<h3>4.5 T4 Article [R]</h3>
+<pre class="text"><code>main#main.site-main.template-article
+└── article.article[itemscope?] 
+    ├── header.article-header &gt; div.container--prose
+    │   ├── nav.breadcrumb? (optional, off by default)
+    │   ├── h1.article-header__title
+    │   ├── p.article-header__dek?
+    │   └── div.article-meta
+    │       ├── time[datetime]  (published)
+    │       ├── time[datetime]? (updated — &quot;Updated &lt;date&gt;&quot;)
+    │       ├── span.article-meta__reading-time
+    │       └── ul.tag-list &gt; li &gt; a.tag[rel=&quot;tag&quot;]
+    ├── figure.article-hero? &gt; img + figcaption   (optional, .bleed-wide)
+    ├── div.article-layout   (grid at ≥ 75rem)
+    │   ├── nav.toc[aria-labelledby=&quot;toc-title&quot;]   (only if ≥ 3 h2)
+    │   └── div.prose.container--prose  (h2/h3, p, lists, figure, pre, blockquote, table, aside.callout)
+    └── footer.article-footer &gt; div.container--prose
+        ├── ul.tag-list
+        ├── p.article-footer__share  (copy-link button; optional)
+        ├── section.related-posts[aria-labelledby]  &gt; ul &gt; li &gt; article.post-card × 3
+        └── nav.prev-next[aria-label=&quot;More writing&quot;] &gt; a[rel=&quot;prev&quot;] + a[rel=&quot;next&quot;]</code></pre>
+<p>Variations: <code>article--no-toc</code> (fewer than 3
+<code>h2</code>), <code>article--with-hero</code>,
+<code>article--note</code> (a short form: no TOC, no hero, no reading
+time).</p>
+</section>
+<section id="46-t5-projects-listing-r" class="level3">
+<h3>4.6 T5 Projects listing [R]</h3>
+<pre class="text"><code>main#main.site-main.template-projects &gt; div.container--wide
+├── header.page-header
+└── ul.card-grid &gt; li &gt; article.project-card × n   (status filter optional: active / archived)</code></pre>
+</section>
+<section id="47-t6-project-detail-r" class="level3">
+<h3>4.7 T6 Project detail [R]</h3>
+<pre class="text"><code>main#main.site-main.template-project
+└── article.project &gt; div.container--prose
+    ├── nav.breadcrumb[aria-label=&quot;Breadcrumb&quot;] &gt; ol &gt; li × 3  (Home / Projects / &lt;title&gt;)
+    ├── header.project-header &gt; h1 + p.dek + ul.badge-list + div.project-header__links (a.button × 1–3)
+    ├── dl.project-facts   (Role, Period, Status, Stack/Methods, Partners)
+    ├── div.prose
+    └── section.related-posts?</code></pre>
+</section>
+<section id="48-t7t9-r" class="level3">
+<h3>4.8 T7–T9 [R]</h3>
+<ul>
+<li><strong>T7 Topic archive:</strong> <code>/topics/</code> renders
+<code>ul.topic-index</code> (topic name plus post count).
+<code>/topics/&lt;topic&gt;/</code> reuses T3 and changes only the
+heading ("Topic: <name>") and the canonical URL.</li>
+<li><strong>T8 Search:</strong> a static, client-side index (Pagefind is
+recommended, §13). The page works without JavaScript: a
+<code>&lt;noscript&gt;</code> message links to <code>/writing/</code>
+and <code>/topics/</code>.</li>
+<li><strong>T9 Not found:</strong> a standard page with a SearchBox and
+a link home. It returns HTTP 404 status.</li>
+</ul>
+</section>
+<section id="49-url-and-routing-rules-r" class="level3">
+<h3>4.9 URL and routing rules [R]</h3>
+<ul>
+<li>Trailing slash on every HTML route. Slugs are lowercase kebab-case
+ASCII.</li>
+<li>Article slugs never change after publication. A renamed slug gets a
+301 entry in <code>public/_redirects</code> (or the host's
+equivalent).</li>
+<li>Each page has exactly one canonical URL:
+<code>&lt;link rel="canonical"&gt;</code> is absolute and uses
+<code>https://kingsleyobi.com</code>.</li>
+</ul>
+<hr />
+</section>
+</section>
+<section id="5-html-element-and-semantic-markup-requirements"
+class="level2">
+<h2>5. HTML element and semantic markup requirements</h2>
+<section id="51-document-head-r" class="level3">
+<h3>5.1 Document head [R]</h3>
+<pre class="html"><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;{Page title} — Kingsley Obi&lt;/title&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;{≤ 160 chars}&quot;&gt;
+  &lt;link rel=&quot;canonical&quot; href=&quot;https://kingsleyobi.com{path}&quot;&gt;
+  &lt;meta name=&quot;color-scheme&quot; content=&quot;light dark&quot;&gt;
+  &lt;meta name=&quot;theme-color&quot; content=&quot;#ffffff&quot; media=&quot;(prefers-color-scheme: light)&quot;&gt;
+  &lt;meta name=&quot;theme-color&quot; content=&quot;#0f1115&quot; media=&quot;(prefers-color-scheme: dark)&quot;&gt;
+  &lt;link rel=&quot;icon&quot; href=&quot;/favicon.svg&quot; type=&quot;image/svg+xml&quot;&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot; title=&quot;Kingsley Obi — Writing&quot; href=&quot;/rss.xml&quot;&gt;
+  &lt;meta property=&quot;og:type&quot; content=&quot;website|article&quot;&gt;
+  &lt;meta property=&quot;og:title&quot; content=&quot;{title}&quot;&gt;
+  &lt;meta property=&quot;og:description&quot; content=&quot;{description}&quot;&gt;
+  &lt;meta property=&quot;og:url&quot; content=&quot;https://kingsleyobi.com{path}&quot;&gt;
+  &lt;meta property=&quot;og:image&quot; content=&quot;https://kingsleyobi.com/og/{slug}.png&quot;&gt;
+  &lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;&gt;
+  &lt;link rel=&quot;preload&quot; href=&quot;/fonts/{body}.woff2&quot; as=&quot;font&quot; type=&quot;font/woff2&quot; crossorigin&gt;
+  &lt;script&gt;/* inline theme bootstrap, §10.3 — runs before first paint */&lt;/script&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/styles/{hash}.css&quot;&gt;
+  &lt;script type=&quot;application/ld+json&quot;&gt;{ /* Person on home, BlogPosting on articles */ }&lt;/script&gt;
+&lt;/head&gt;</code></pre>
+</section>
+<section id="52-landmarks-and-elements-r" class="level3">
+<h3>5.2 Landmarks and elements [R]</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Requirement</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Landmarks</td>
+<td>Exactly one each of <code>header.site-header</code>,
+<code>main#main</code> and <code>footer.site-footer</code> per page.
+Every <code>nav</code> has a unique <code>aria-label</code>.</td>
+</tr>
+<tr class="even">
+<td>Headings</td>
+<td>Exactly one <code>h1</code> per page. Levels never skip (h2 → h4 is
+forbidden). Section headings inside <code>main</code> start at
+<code>h2</code>. Card titles inside listings are <code>h2</code>
+(archive) or <code>h3</code> (inside a sectioned home or related
+block).</td>
+</tr>
+<tr class="odd">
+<td>Lists</td>
+<td>Post lists are <code>ol</code>. Card grids, tag lists, nav menus and
+social links are <code>ul</code>. Project facts are
+<code>dl</code>.</td>
+</tr>
+<tr class="even">
+<td>Dates</td>
+<td>Every date is a <code>time[datetime="YYYY-MM-DD"]</code>. The
+display format is <code>29 Oct 2026</code>.</td>
+</tr>
+<tr class="odd">
+<td>Links vs buttons</td>
+<td><code>a[href]</code> navigates; <code>button[type="button"]</code>
+acts (toggle, copy). Never <code>div[onclick]</code>.</td>
+</tr>
+<tr class="even">
+<td>Images</td>
+<td><code>img</code> always has <code>alt</code> (empty only if
+decorative), <code>width</code>, <code>height</code>,
+<code>loading="lazy"</code> (except the hero/LCP image, which gets
+<code>fetchpriority="high"</code>) and <code>decoding="async"</code>.
+Content images are wrapped in <code>figure</code> with an optional
+<code>figcaption</code>.</td>
+</tr>
+<tr class="odd">
+<td>Tables</td>
+<td>Prose tables are wrapped in
+<code>div.table-wrap[role="region"][tabindex="0"][aria-label]</code> for
+horizontal scroll. Each has a <code>caption</code> or a preceding
+heading, and <code>th[scope]</code>.</td>
+</tr>
+<tr class="even">
+<td>Code</td>
+<td>Block: <code>pre &gt; code.language-{lang}</code>. Inline:
+<code>code</code>.</td>
+</tr>
+<tr class="odd">
+<td>Quotes</td>
+<td><code>blockquote</code> with optional <code>cite</code> /
+<code>figcaption</code> attribution in a <code>figure</code>.</td>
+</tr>
+<tr class="even">
+<td>Embeds</td>
+<td><code>iframe</code> only via the <code>Embed</code> component:
+<code>title</code> is required, <code>loading="lazy"</code>, wrapped in
+<code>div.embed</code> for aspect ratio.</td>
+</tr>
+<tr class="odd">
+<td>Forms</td>
+<td>Every input has a visible <code>label</code>. Search uses
+<code>form[role="search"]</code>.</td>
+</tr>
+<tr class="even">
+<td>External links</td>
+<td><code>rel="noopener"</code>. No <code>target="_blank"</code> unless
+the content needs it; if used, a visually hidden "(opens in new tab)" is
+added.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</section>
+</section>
+<section id="6-reusable-component-inventory" class="level2">
+<h2>6. Reusable component inventory</h2>
+<p>The evidence column tags every component <strong>[R]</strong>: none
+were observed on the reference site (§1.3). The <em>Verify</em> column
+marks the components whose presence and form on the reference site
+should be checked first [V].</p>
+<table>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Component</th>
+<th>Purpose</th>
+<th>Templates</th>
+<th>Root element / class</th>
+<th>Variants</th>
+<th>Interactive</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>C1</td>
+<td>SkipLink</td>
+<td>Jump past header</td>
+<td>all</td>
+<td><code>a.skip-link</code></td>
+<td>none</td>
+<td>focus reveal</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>C2</td>
+<td>SiteHeader</td>
+<td>Brand, nav, actions</td>
+<td>all</td>
+<td><code>header.site-header</code></td>
+<td><code>--sticky</code> (off by default)</td>
+<td>none</td>
+<td>V</td>
+</tr>
+<tr class="odd">
+<td>C3</td>
+<td>PrimaryNav</td>
+<td>Main navigation</td>
+<td>all</td>
+<td><code>nav.primary-nav</code></td>
+<td>desktop inline / mobile disclosure</td>
+<td>toggle</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>C4</td>
+<td>ThemeToggle</td>
+<td>Light/dark switch</td>
+<td>all</td>
+<td><code>button.theme-toggle</code></td>
+<td>icon only</td>
+<td>toggle + persist</td>
+<td>V</td>
+</tr>
+<tr class="odd">
+<td>C5</td>
+<td>SiteFooter</td>
+<td>Footer nav, social, legal</td>
+<td>all</td>
+<td><code>footer.site-footer</code></td>
+<td>none</td>
+<td>none</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>C6</td>
+<td>PageHeader</td>
+<td>Page title block</td>
+<td>T2, T3, T5, T7–T9</td>
+<td><code>header.page-header</code></td>
+<td><code>--with-lede</code>, <code>--with-count</code></td>
+<td>none</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>C7</td>
+<td>Hero</td>
+<td>Home introduction</td>
+<td>T1</td>
+<td><code>section.hero</code></td>
+<td><code>--with-portrait</code></td>
+<td>none</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>C8</td>
+<td>SectionHeader</td>
+<td>Titled section with "see all"</td>
+<td>T1</td>
+<td><code>header.section-header</code></td>
+<td>none</td>
+<td>none</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>C9</td>
+<td>PostListItem</td>
+<td>Compact post row</td>
+<td>T1, T3, T7</td>
+<td><code>li.post-list-item</code></td>
+<td><code>--with-excerpt</code>, <code>--compact</code></td>
+<td>none</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>C10</td>
+<td>PostCard</td>
+<td>Visual post teaser</td>
+<td>T4 related</td>
+<td><code>article.post-card</code></td>
+<td><code>--with-image</code></td>
+<td>whole-card link</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>C11</td>
+<td>ProjectCard</td>
+<td>Project teaser</td>
+<td>T1, T5</td>
+<td><code>article.project-card</code></td>
+<td><code>--featured</code>, <code>--archived</code></td>
+<td>whole-card link</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>C12</td>
+<td>ArticleHeader</td>
+<td>Article title block</td>
+<td>T4</td>
+<td><code>header.article-header</code></td>
+<td><code>--with-dek</code></td>
+<td>none</td>
+<td>V</td>
+</tr>
+<tr class="odd">
+<td>C13</td>
+<td>ArticleMeta</td>
+<td>Dates, reading time, tags</td>
+<td>T4, C9</td>
+<td><code>div.article-meta</code></td>
+<td><code>--inline</code></td>
+<td>none</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>C14</td>
+<td>TagList / Tag</td>
+<td>Topic links</td>
+<td>T3, T4, T6</td>
+<td><code>ul.tag-list &gt; li &gt; a.tag</code></td>
+<td><code>--active</code></td>
+<td>none</td>
+<td>V</td>
+</tr>
+<tr class="odd">
+<td>C15</td>
+<td>TOC</td>
+<td>In-article navigation</td>
+<td>T4</td>
+<td><code>nav.toc</code></td>
+<td>inline / sticky rail</td>
+<td>scroll-spy (progressive)</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>C16</td>
+<td>Prose</td>
+<td>Rendered Markdown typography</td>
+<td>T2, T4, T6</td>
+<td><code>div.prose</code></td>
+<td>none</td>
+<td>none</td>
+<td>V</td>
+</tr>
+<tr class="odd">
+<td>C17</td>
+<td>CodeBlock</td>
+<td>Highlighted code</td>
+<td>T4</td>
+<td><code>figure.code-block</code></td>
+<td><code>--with-filename</code></td>
+<td>copy button</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>C18</td>
+<td>Callout</td>
+<td>Note/tip/warning</td>
+<td>T4, T6</td>
+<td><code>aside.callout</code></td>
+<td><code>--note</code>, <code>--tip</code>, <code>--warning</code></td>
+<td>none</td>
+<td>V</td>
+</tr>
+<tr class="odd">
+<td>C19</td>
+<td>Figure / Embed</td>
+<td>Images, video</td>
+<td>T4, T6</td>
+<td><code>figure.figure</code>, <code>div.embed</code></td>
+<td><code>--wide</code>, <code>--full</code></td>
+<td>none</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>C20</td>
+<td>Pagination</td>
+<td>Paged archives</td>
+<td>T3, T7</td>
+<td><code>nav.pagination</code></td>
+<td>none</td>
+<td>none</td>
+<td>V</td>
+</tr>
+<tr class="odd">
+<td>C21</td>
+<td>PrevNext</td>
+<td>Adjacent articles</td>
+<td>T4</td>
+<td><code>nav.prev-next</code></td>
+<td>none</td>
+<td>none</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>C22</td>
+<td>RelatedPosts</td>
+<td>Related content</td>
+<td>T4, T6</td>
+<td><code>section.related-posts</code></td>
+<td>none</td>
+<td>none</td>
+<td>V</td>
+</tr>
+<tr class="odd">
+<td>C23</td>
+<td>Breadcrumb</td>
+<td>Hierarchy trail</td>
+<td>T6</td>
+<td><code>nav.breadcrumb</code></td>
+<td>none</td>
+<td>none</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>C24</td>
+<td>Button</td>
+<td>Calls to action</td>
+<td>T1, T6, CTA</td>
+<td><code>a.button</code> / <code>button.button</code></td>
+<td><code>--primary</code>, <code>--ghost</code>,
+<code>--small</code></td>
+<td>states §8.8</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>C25</td>
+<td>SearchBox / Results</td>
+<td>Site search</td>
+<td>T8, T9</td>
+<td><code>form.search-box[role=search]</code></td>
+<td>none</td>
+<td>live results</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>C26</td>
+<td>CTABlock</td>
+<td>Contact / subscribe prompt</td>
+<td>T1, T4 footer (optional)</td>
+<td><code>section.cta-block</code></td>
+<td><code>--subtle</code></td>
+<td>none</td>
+<td>V</td>
+</tr>
+<tr class="odd">
+<td>C27</td>
+<td>ProjectFacts</td>
+<td>Key/value project data</td>
+<td>T6</td>
+<td><code>dl.project-facts</code></td>
+<td>none</td>
+<td>none</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>C28</td>
+<td>Badge</td>
+<td>Status labels</td>
+<td>T5, T6</td>
+<td><code>span.badge</code></td>
+<td><code>--active</code>, <code>--archived</code></td>
+<td>none</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+</section>
+<section id="7-component-structure-and-variants" class="level2">
+<h2>7. Component structure and variants</h2>
+<p>All snippets are <strong>target markup [R]</strong> for the
+kingsleyobi.com build. Class naming is BEM-style
+(<code>block__element--modifier</code>).</p>
+<section id="c1-skiplink" class="level3">
+<h3>C1 SkipLink</h3>
+<pre class="html"><code>&lt;a class=&quot;skip-link&quot; href=&quot;#main&quot;&gt;Skip to content&lt;/a&gt;</code></pre>
+<p>Visually hidden until focused. When focused it appears at the
+top-left with <code>--shadow-md</code>, above everything
+(<code>z-index: 100</code>).</p>
+</section>
+<section id="c2c4-siteheader-primarynav-themetoggle" class="level3">
+<h3>C2–C4 SiteHeader, PrimaryNav, ThemeToggle</h3>
+<pre class="html"><code>&lt;header class=&quot;site-header&quot;&gt;
+  &lt;div class=&quot;container container--page site-header__inner&quot;&gt;
+    &lt;a class=&quot;site-brand&quot; href=&quot;/&quot; aria-label=&quot;Kingsley Obi — home&quot;&gt;Kingsley Obi&lt;/a&gt;
+    &lt;nav class=&quot;primary-nav&quot; aria-label=&quot;Primary&quot;&gt;
+      &lt;button class=&quot;nav-toggle&quot; type=&quot;button&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;primary-menu&quot;&gt;
+        &lt;span class=&quot;visually-hidden&quot;&gt;Menu&lt;/span&gt;&lt;svg aria-hidden=&quot;true&quot;&gt;…&lt;/svg&gt;
+      &lt;/button&gt;
+      &lt;ul id=&quot;primary-menu&quot; class=&quot;primary-nav__list&quot;&gt;
+        &lt;li&gt;&lt;a class=&quot;primary-nav__link&quot; href=&quot;/writing/&quot; aria-current=&quot;page&quot;&gt;Writing&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class=&quot;primary-nav__link&quot; href=&quot;/projects/&quot;&gt;Projects&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class=&quot;primary-nav__link&quot; href=&quot;/about/&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class=&quot;primary-nav__link&quot; href=&quot;/contact/&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+    &lt;div class=&quot;header-actions&quot;&gt;
+      &lt;a class=&quot;icon-button&quot; href=&quot;/search/&quot; aria-label=&quot;Search&quot;&gt;&lt;svg aria-hidden=&quot;true&quot;&gt;…&lt;/svg&gt;&lt;/a&gt;
+      &lt;button class=&quot;theme-toggle icon-button&quot; type=&quot;button&quot; aria-pressed=&quot;false&quot; aria-label=&quot;Dark theme&quot;&gt;
+        &lt;svg aria-hidden=&quot;true&quot;&gt;…&lt;/svg&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+<ul>
+<li>Layout: flex, <code>justify-content: space-between</code>,
+<code>align-items: center</code>, height <code>--header-h</code> (4
+rem).</li>
+<li><code>aria-current="page"</code> is set on the link for the current
+section (prefix match, so <code>/writing/x/</code> marks Writing).</li>
+<li>Below 40 rem: the toggle is visible and the list is hidden until
+<code>aria-expanded="true"</code>. Above 40 rem: the toggle has
+<code>display:none</code> and the list is an inline flex row with
+<code>gap: var(--space-6)</code>.</li>
+</ul>
+</section>
+<section id="c6-pageheader" class="level3">
+<h3>C6 PageHeader</h3>
+<pre class="html"><code>&lt;header class=&quot;page-header&quot;&gt;
+  &lt;h1 class=&quot;page-header__title&quot;&gt;Writing&lt;/h1&gt;
+  &lt;p class=&quot;page-header__lede&quot;&gt;Short description of the section.&lt;/p&gt;
+  &lt;p class=&quot;page-header__count&quot;&gt;42 posts&lt;/p&gt;
+&lt;/header&gt;</code></pre>
+</section>
+<section id="c9-postlistitem" class="level3">
+<h3>C9 PostListItem</h3>
+<pre class="html"><code>&lt;li class=&quot;post-list-item&quot;&gt;
+  &lt;article&gt;
+    &lt;h2 class=&quot;post-list-item__title&quot;&gt;&lt;a href=&quot;/writing/slug/&quot;&gt;Post title&lt;/a&gt;&lt;/h2&gt;
+    &lt;div class=&quot;article-meta article-meta--inline&quot;&gt;
+      &lt;time datetime=&quot;2026-10-29&quot;&gt;29 Oct 2026&lt;/time&gt;
+      &lt;span aria-hidden=&quot;true&quot;&gt;·&lt;/span&gt;&lt;span&gt;6 min read&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;post-list-item__excerpt&quot;&gt;One- to two-line excerpt.&lt;/p&gt;  &lt;!-- --with-excerpt only --&gt;
+  &lt;/article&gt;
+&lt;/li&gt;</code></pre>
+<p>At ≥ 60 rem, <code>--compact</code> becomes a two-column grid
+(<code>grid-template-columns: 8rem 1fr</code>) with the date on the
+left.</p>
+</section>
+<section id="c10c11-postcard-and-projectcard" class="level3">
+<h3>C10–C11 PostCard and ProjectCard</h3>
+<pre class="html"><code>&lt;article class=&quot;project-card&quot;&gt;
+  &lt;img class=&quot;project-card__media&quot; src=&quot;…&quot; alt=&quot;&quot; width=&quot;640&quot; height=&quot;360&quot; loading=&quot;lazy&quot;&gt;
+  &lt;div class=&quot;project-card__body&quot;&gt;
+    &lt;h3 class=&quot;project-card__title&quot;&gt;&lt;a class=&quot;card-link&quot; href=&quot;/projects/slug/&quot;&gt;Project name&lt;/a&gt;&lt;/h3&gt;
+    &lt;p class=&quot;project-card__summary&quot;&gt;One-sentence summary.&lt;/p&gt;
+    &lt;ul class=&quot;badge-list&quot;&gt;&lt;li&gt;&lt;span class=&quot;badge badge--active&quot;&gt;Active&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+<ul>
+<li>The whole card is clickable through
+<code>.card-link::after { content:""; position:absolute; inset:0 }</code>.
+There is only one link per card.</li>
+<li>Styling: <code>--surface</code> background,
+<code>1px solid var(--border)</code>, <code>--radius-lg</code>. On hover
+or focus-within: border becomes <code>--accent</code> and
+<code>translateY(-2px)</code> (disabled under
+<code>prefers-reduced-motion</code>).</li>
+<li>Media aspect ratio is fixed at <strong>16:9</strong>
+(<code>aspect-ratio: 16 / 9; object-fit: cover</code>).</li>
+</ul>
+</section>
+<section id="c12c14-articleheader-articlemeta-taglist" class="level3">
+<h3>C12–C14 ArticleHeader, ArticleMeta, TagList</h3>
+<pre class="html"><code>&lt;header class=&quot;article-header&quot;&gt;
+  &lt;div class=&quot;container container--prose&quot;&gt;
+    &lt;h1 class=&quot;article-header__title&quot;&gt;Article title&lt;/h1&gt;
+    &lt;p class=&quot;article-header__dek&quot;&gt;Optional one-sentence standfirst.&lt;/p&gt;
+    &lt;div class=&quot;article-meta&quot;&gt;
+      &lt;span&gt;Published &lt;time datetime=&quot;2026-10-01&quot;&gt;1 Oct 2026&lt;/time&gt;&lt;/span&gt;
+      &lt;span&gt;Updated &lt;time datetime=&quot;2026-10-20&quot;&gt;20 Oct 2026&lt;/time&gt;&lt;/span&gt;
+      &lt;span class=&quot;article-meta__reading-time&quot;&gt;8 min read&lt;/span&gt;
+      &lt;ul class=&quot;tag-list&quot; aria-label=&quot;Topics&quot;&gt;
+        &lt;li&gt;&lt;a class=&quot;tag&quot; href=&quot;/topics/evaluation/&quot; rel=&quot;tag&quot;&gt;evaluation&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+</section>
+<section id="c15-toc" class="level3">
+<h3>C15 TOC</h3>
+<pre class="html"><code>&lt;nav class=&quot;toc&quot; aria-labelledby=&quot;toc-title&quot;&gt;
+  &lt;h2 id=&quot;toc-title&quot; class=&quot;toc__title&quot;&gt;On this page&lt;/h2&gt;
+  &lt;ol class=&quot;toc__list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;#section-id&quot;&gt;Section&lt;/a&gt;
+      &lt;ol&gt;&lt;li&gt;&lt;a href=&quot;#sub-id&quot;&gt;Subsection&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+<ul>
+<li>Generated at build time from <code>h2</code>/<code>h3</code> (depth
+2). Rendered only if the article has ≥ 3 <code>h2</code>.</li>
+<li>Below 75 rem: inside a <code>details.toc-disclosure</code> (closed
+by default) above the prose. At ≥ 75 rem:
+<code>position: sticky; top: calc(var(--header-h) + var(--space-6))</code>
+in the left rail.</li>
+<li>Scroll-spy is a progressive enhancement: an
+<code>IntersectionObserver</code> sets <code>aria-current="true"</code>
+on the active link. Without JavaScript the TOC still works.</li>
+</ul>
+</section>
+<section id="c16-prose" class="level3">
+<h3>C16 Prose</h3>
+<p>Rules applied inside <code>.prose</code> only:</p>
+<ul>
+<li>Flow spacing:
+<code>&gt; * + * { margin-block-start: var(--space-5) }</code>;
+<code>h2</code> gets <code>margin-block-start: var(--space-10)</code>;
+<code>h3</code> gets <code>var(--space-8)</code>.</li>
+<li>Headings have anchor links:
+<code>h2[id] &gt; a.heading-anchor[aria-label="Link to section"]</code>,
+visible on hover or focus.</li>
+<li>Links are underlined
+(<code>text-decoration-thickness: 1px; text-underline-offset: 0.2em</code>),
+coloured <code>--accent</code>.</li>
+<li>Lists: <code>padding-inline-start: 1.25em</code>,
+<code>li + li { margin-top: var(--space-2) }</code>.</li>
+<li><code>blockquote</code>:
+<code>border-inline-start: 3px solid var(--accent)</code>,
+<code>padding-inline-start: var(--space-5)</code>,
+<code>color: var(--text-muted)</code>, italic off.</li>
+<li><code>hr</code>: <code>1px solid var(--border)</code>,
+<code>margin-block: var(--space-10)</code>.</li>
+</ul>
+</section>
+<section id="c17-codeblock" class="level3">
+<h3>C17 CodeBlock</h3>
+<pre class="html"><code>&lt;figure class=&quot;code-block&quot;&gt;
+  &lt;figcaption class=&quot;code-block__filename&quot;&gt;src/styles/tokens.css&lt;/figcaption&gt;  &lt;!-- --with-filename --&gt;
+  &lt;pre tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;…&lt;/code&gt;&lt;/pre&gt;
+  &lt;button class=&quot;code-block__copy button button--small&quot; type=&quot;button&quot;&gt;Copy&lt;/button&gt;
+&lt;/figure&gt;</code></pre>
+<ul>
+<li>Syntax highlighting happens at build time (no runtime highlighter).
+Themes follow <code>--code-*</code> tokens in both colour modes.</li>
+<li><code>pre</code> uses <code>overflow-x: auto</code> (no wrapping),
+<code>font-size: var(--fs-sm)</code>,
+<code>padding: var(--space-5)</code>, <code>--radius-md</code>.</li>
+<li>After clicking, the copy button text changes to "Copied" for 2 s,
+announced through an <code>aria-live="polite"</code> region. It is
+hidden when <code>navigator.clipboard</code> is unavailable.</li>
+</ul>
+</section>
+<section id="c18-callout" class="level3">
+<h3>C18 Callout</h3>
+<pre class="html"><code>&lt;aside class=&quot;callout callout--note&quot; aria-label=&quot;Note&quot;&gt;
+  &lt;p class=&quot;callout__title&quot;&gt;Note&lt;/p&gt;
+  &lt;p&gt;Callout body.&lt;/p&gt;
+&lt;/aside&gt;</code></pre>
+<p>Variants change only <code>--callout-accent</code> (note =
+<code>--accent</code>, tip = <code>--success</code>, warning =
+<code>--warning</code>). Styling:
+<code>border-inline-start: 4px solid var(--callout-accent)</code>,
+<code>background: var(--surface)</code>, <code>--radius-md</code>.
+Written in Markdown as <code>&gt; [!NOTE]</code>,
+<code>&gt; [!TIP]</code>, <code>&gt; [!WARNING]</code> and transformed
+at build time.</p>
+</section>
+<section id="c20c21-pagination-and-prevnext" class="level3">
+<h3>C20–C21 Pagination and PrevNext</h3>
+<pre class="html"><code>&lt;nav class=&quot;pagination&quot; aria-label=&quot;Pagination&quot;&gt;
+  &lt;a class=&quot;pagination__prev&quot; href=&quot;/writing/&quot; rel=&quot;prev&quot;&gt;← Newer&lt;/a&gt;
+  &lt;ol class=&quot;pagination__pages&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;/writing/&quot;&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/writing/page/2/&quot; aria-current=&quot;page&quot;&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/writing/page/3/&quot;&gt;3&lt;/a&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;a class=&quot;pagination__next&quot; href=&quot;/writing/page/3/&quot; rel=&quot;next&quot;&gt;Older →&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+<p>When there is no previous or next page, that control is omitted, not
+shown disabled. PrevNext uses the same pattern with article titles as
+link text.</p>
+</section>
+<section id="c23-breadcrumb" class="level3">
+<h3>C23 Breadcrumb</h3>
+<pre class="html"><code>&lt;nav class=&quot;breadcrumb&quot; aria-label=&quot;Breadcrumb&quot;&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/projects/&quot;&gt;Projects&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/projects/slug/&quot; aria-current=&quot;page&quot;&gt;Project name&lt;/a&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+<p>Separators are added with CSS
+(<code>li + li::before { content: "/" }</code>) and are not in the DOM
+text. It is paired with <code>BreadcrumbList</code> JSON-LD.</p>
+</section>
+<section id="c24-button" class="level3">
+<h3>C24 Button</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Variant</th>
+<th>Background</th>
+<th>Text</th>
+<th>Border</th>
+<th>Hover / focus</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>--primary</code></td>
+<td><code>--accent</code></td>
+<td><code>--on-accent</code></td>
+<td>none</td>
+<td>bg <code>--accent-strong</code></td>
+</tr>
+<tr class="even">
+<td><code>--ghost</code></td>
+<td>transparent</td>
+<td><code>--text</code></td>
+<td><code>1px solid var(--border-strong)</code></td>
+<td>border <code>--accent</code>, text <code>--accent</code></td>
+</tr>
+<tr class="odd">
+<td><code>--small</code></td>
+<td>inherits</td>
+<td>inherits</td>
+<td>inherits</td>
+<td>padding <code>--space-1 --space-3</code>, <code>--fs-sm</code></td>
+</tr>
+</tbody>
+</table>
+<p>Base:
+<code>display:inline-flex; align-items:center; gap:var(--space-2); min-height:2.75rem; padding:var(--space-3) var(--space-5); border-radius:var(--radius-md); font-weight:600</code>.</p>
+</section>
+<section id="c25-searchbox" class="level3">
+<h3>C25 SearchBox</h3>
+<pre class="html"><code>&lt;form class=&quot;search-box&quot; role=&quot;search&quot; action=&quot;/search/&quot; method=&quot;get&quot;&gt;
+  &lt;label for=&quot;q&quot;&gt;Search the site&lt;/label&gt;
+  &lt;input id=&quot;q&quot; name=&quot;q&quot; type=&quot;search&quot; autocomplete=&quot;off&quot;&gt;
+  &lt;button class=&quot;button button--primary&quot; type=&quot;submit&quot;&gt;Search&lt;/button&gt;
+&lt;/form&gt;
+&lt;div class=&quot;search-results&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;</code></pre>
+<p><code>?q=</code> in the URL is honoured on load, so results are
+shareable.</p>
+</section>
+<section id="c27-projectfacts" class="level3">
+<h3>C27 ProjectFacts</h3>
+<pre class="html"><code>&lt;dl class=&quot;project-facts&quot;&gt;
+  &lt;div&gt;&lt;dt&gt;Role&lt;/dt&gt;&lt;dd&gt;…&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Period&lt;/dt&gt;&lt;dd&gt;&lt;time datetime=&quot;2025-01&quot;&gt;Jan 2025&lt;/time&gt; – present&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Status&lt;/dt&gt;&lt;dd&gt;&lt;span class=&quot;badge badge--active&quot;&gt;Active&lt;/span&gt;&lt;/dd&gt;&lt;/div&gt;
+&lt;/dl&gt;</code></pre>
+<p>At ≥ 40 rem this is a two-column grid
+(<code>grid-template-columns: max-content 1fr</code>).</p>
+<hr />
+</section>
+</section>
+<section id="8-css-and-design-token-specifications" class="level2">
+<h2>8. CSS and design-token specifications</h2>
+<p>All values are <strong>original [R]</strong>. All tokens live in
+<code>src/styles/tokens.css</code> as custom properties on
+<code>:root</code>. Components reference tokens only; a raw hex value or
+px size outside <code>tokens.css</code> is a defect (acceptance
+criterion AC-25).</p>
+<section id="81-typography" class="level3">
+<h3>8.1 Typography</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Token</th>
+<th>Value</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>--font-sans</code></td>
+<td><code>"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif</code></td>
+<td>UI, headings, nav, meta</td>
+</tr>
+<tr class="even">
+<td><code>--font-serif</code></td>
+<td><code>"Source Serif 4", ui-serif, Georgia, "Times New Roman", serif</code></td>
+<td>Long-form prose body</td>
+</tr>
+<tr class="odd">
+<td><code>--font-mono</code></td>
+<td><code>"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace</code></td>
+<td>Code</td>
+</tr>
+</tbody>
+</table>
+<p>All three are SIL OFL fonts, <strong>self-hosted</strong> as
+<code>woff2</code> variable fonts with <code>font-display: swap</code>.
+Only the body font is preloaded.</p>
+<p>Weights: 400 body, 600 UI emphasis and buttons, 700 headings.</p>
+</section>
+<section id="82-type-scale-fluid-125-ratio" class="level3">
+<h3>8.2 Type scale (fluid, ~1.25 ratio)</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Token</th>
+<th>Mobile (≤ 40rem)</th>
+<th>Desktop (≥ 75rem)</th>
+<th>CSS value</th>
+<th>Line height</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>--fs-xs</code></td>
+<td>0.8125rem</td>
+<td>0.8125rem</td>
+<td><code>0.8125rem</code></td>
+<td>1.4</td>
+</tr>
+<tr class="even">
+<td><code>--fs-sm</code></td>
+<td>0.875rem</td>
+<td>0.9375rem</td>
+<td><code>clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem)</code></td>
+<td>1.5</td>
+</tr>
+<tr class="odd">
+<td><code>--fs-base</code></td>
+<td>1.0625rem</td>
+<td>1.1875rem</td>
+<td><code>clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem)</code></td>
+<td>1.7 (prose) / 1.5 (UI)</td>
+</tr>
+<tr class="even">
+<td><code>--fs-lg</code></td>
+<td>1.1875rem</td>
+<td>1.375rem</td>
+<td><code>clamp(1.1875rem, 1.1rem + 0.4vw, 1.375rem)</code></td>
+<td>1.5</td>
+</tr>
+<tr class="odd">
+<td><code>--fs-h3</code></td>
+<td>1.25rem</td>
+<td>1.5rem</td>
+<td><code>clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem)</code></td>
+<td>1.3</td>
+</tr>
+<tr class="even">
+<td><code>--fs-h2</code></td>
+<td>1.5rem</td>
+<td>1.875rem</td>
+<td><code>clamp(1.5rem, 1.3rem + 0.9vw, 1.875rem)</code></td>
+<td>1.25</td>
+</tr>
+<tr class="odd">
+<td><code>--fs-h1</code></td>
+<td>2rem</td>
+<td>2.75rem</td>
+<td><code>clamp(2rem, 1.6rem + 1.8vw, 2.75rem)</code></td>
+<td>1.15</td>
+</tr>
+<tr class="even">
+<td><code>--fs-display</code></td>
+<td>2.375rem</td>
+<td>3.5rem</td>
+<td><code>clamp(2.375rem, 1.8rem + 2.6vw, 3.5rem)</code></td>
+<td>1.1</td>
+</tr>
+</tbody>
+</table>
+<p>Headings use <code>--font-sans</code> at weight 700 with
+<code>letter-spacing: -0.015em</code> (h1/display <code>-0.02em</code>)
+and <code>text-wrap: balance</code>. Prose paragraphs use
+<code>text-wrap: pretty</code>.</p>
+</section>
+<section id="83-widths-and-frame" class="level3">
+<h3>8.3 Widths and frame</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Token</th>
+<th>Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>--w-prose</code></td>
+<td><code>42rem</code> (≈ 672 px; ~68–72 characters at
+<code>--fs-base</code> serif)</td>
+<td>Running text</td>
+</tr>
+<tr class="even">
+<td><code>--w-wide</code></td>
+<td><code>60rem</code> (960 px)</td>
+<td>Listings, card grids, wide figures</td>
+</tr>
+<tr class="odd">
+<td><code>--w-page</code></td>
+<td><code>75rem</code> (1200 px)</td>
+<td>Header/footer frame, article grid</td>
+</tr>
+<tr class="even">
+<td><code>--gutter</code></td>
+<td><code>clamp(1rem, 4vw, 2rem)</code></td>
+<td>Inline page padding</td>
+</tr>
+<tr class="odd">
+<td><code>--header-h</code></td>
+<td><code>4rem</code></td>
+<td>Header height</td>
+</tr>
+<tr class="even">
+<td><code>--toc-w</code></td>
+<td><code>14rem</code></td>
+<td>Sticky TOC rail width</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="84-spacing-scale-4-px-base" class="level3">
+<h3>8.4 Spacing scale (4 px base)</h3>
+<p><code>--space-1: 0.25rem</code> · <code>--space-2: 0.5rem</code> ·
+<code>--space-3: 0.75rem</code> · <code>--space-4: 1rem</code> ·
+<code>--space-5: 1.25rem</code> · <code>--space-6: 1.5rem</code> ·
+<code>--space-8: 2rem</code> · <code>--space-10: 2.5rem</code> ·
+<code>--space-12: 3rem</code> · <code>--space-16: 4rem</code> ·
+<code>--space-24: 6rem</code></p>
+<p>Vertical rhythm: <code>main</code> gets
+<code>padding-block: var(--space-12) var(--space-24)</code>. Home
+sections are separated by <code>--space-16</code>. A page header gets
+<code>margin-block-end: var(--space-10)</code>.</p>
+</section>
+<section id="85-colour-tokens" class="level3">
+<h3>8.5 Colour tokens</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Token</th>
+<th>Light</th>
+<th>Dark</th>
+<th>Use / contrast target</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>--bg</code></td>
+<td><code>#ffffff</code></td>
+<td><code>#0f1115</code></td>
+<td>Page background</td>
+</tr>
+<tr class="even">
+<td><code>--surface</code></td>
+<td><code>#f6f7f9</code></td>
+<td><code>#171a21</code></td>
+<td>Cards, callouts, code</td>
+</tr>
+<tr class="odd">
+<td><code>--text</code></td>
+<td><code>#1a1d23</code></td>
+<td><code>#e6e8ec</code></td>
+<td>Body text (≥ 12:1)</td>
+</tr>
+<tr class="even">
+<td><code>--text-muted</code></td>
+<td><code>#5b6270</code></td>
+<td><code>#a3a9b5</code></td>
+<td>Meta, captions (≥ 4.5:1 on <code>--bg</code> and
+<code>--surface</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>--border</code></td>
+<td><code>#e3e6eb</code></td>
+<td><code>#2a2f3a</code></td>
+<td>Hairlines, card borders</td>
+</tr>
+<tr class="even">
+<td><code>--border-strong</code></td>
+<td><code>#c9ced6</code></td>
+<td><code>#3b4250</code></td>
+<td>Ghost buttons, inputs</td>
+</tr>
+<tr class="odd">
+<td><code>--accent</code></td>
+<td><code>#1f5fbf</code></td>
+<td><code>#7fb0ff</code></td>
+<td>Links, primary actions (≥ 4.5:1 on <code>--bg</code>)</td>
+</tr>
+<tr class="even">
+<td><code>--accent-strong</code></td>
+<td><code>#174a96</code></td>
+<td><code>#a9c9ff</code></td>
+<td>Hover/active</td>
+</tr>
+<tr class="odd">
+<td><code>--on-accent</code></td>
+<td><code>#ffffff</code></td>
+<td><code>#0f1115</code></td>
+<td>Text on accent</td>
+</tr>
+<tr class="even">
+<td><code>--focus</code></td>
+<td><code>#1f5fbf</code></td>
+<td><code>#7fb0ff</code></td>
+<td>Focus ring</td>
+</tr>
+<tr class="odd">
+<td><code>--success</code></td>
+<td><code>#1e7a46</code></td>
+<td><code>#6fd39a</code></td>
+<td>Tip callout, active badge</td>
+</tr>
+<tr class="even">
+<td><code>--warning</code></td>
+<td><code>#a15c00</code></td>
+<td><code>#f2b864</code></td>
+<td>Warning callout</td>
+</tr>
+<tr class="odd">
+<td><code>--code-bg</code></td>
+<td><code>#f3f4f6</code></td>
+<td><code>#161a22</code></td>
+<td>Code block background</td>
+</tr>
+<tr class="even">
+<td><code>--selection</code></td>
+<td><code>#cfe0fb</code></td>
+<td><code>#27406b</code></td>
+<td><code>::selection</code></td>
+</tr>
+</tbody>
+</table>
+<p>The contrast targets above are requirements. Each pair must be
+measured and pass during the build (AC-20). If a pair fails, the value
+changes, not the target.</p>
+</section>
+<section id="86-borders-radii-shadows-motion" class="level3">
+<h3>8.6 Borders, radii, shadows, motion</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Token</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>--radius-sm</code> / <code>--radius-md</code> /
+<code>--radius-lg</code> / <code>--radius-pill</code></td>
+<td><code>4px</code> / <code>8px</code> / <code>12px</code> /
+<code>999px</code></td>
+</tr>
+<tr class="even">
+<td><code>--border-w</code></td>
+<td><code>1px</code></td>
+</tr>
+<tr class="odd">
+<td><code>--shadow-sm</code></td>
+<td><code>0 1px 2px rgb(0 0 0 / 0.06)</code> (dark:
+<code>0 1px 2px rgb(0 0 0 / 0.5)</code>)</td>
+</tr>
+<tr class="even">
+<td><code>--shadow-md</code></td>
+<td><code>0 4px 16px rgb(0 0 0 / 0.08)</code> (dark:
+<code>0 4px 16px rgb(0 0 0 / 0.6)</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>--ease</code></td>
+<td><code>cubic-bezier(0.2, 0, 0, 1)</code></td>
+</tr>
+<tr class="even">
+<td><code>--dur-fast</code> / <code>--dur</code></td>
+<td><code>120ms</code> / <code>200ms</code></td>
+</tr>
+</tbody>
+</table>
+<p>Shadows are used only on raised interactive surfaces (skip link,
+mobile menu panel, card hover). Base cards are flat with a border.</p>
+</section>
+<section id="87-layout-utilities" class="level3">
+<h3>8.7 Layout utilities</h3>
+<pre class="css"><code>.container        { margin-inline: auto; padding-inline: var(--gutter); }
+.container--prose { max-width: calc(var(--w-prose) + 2 * var(--gutter)); }
+.container--wide  { max-width: calc(var(--w-wide)  + 2 * var(--gutter)); }
+.container--page  { max-width: calc(var(--w-page)  + 2 * var(--gutter)); }
+.card-grid { display: grid; gap: var(--space-6);
+             grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr)); }
+.bleed-wide { width: min(var(--w-wide), 100vw - 2 * var(--gutter));
+              margin-inline: calc((min(var(--w-wide), 100vw - 2 * var(--gutter)) - 100%) / -2); }
+.visually-hidden { position:absolute; width:1px; height:1px; overflow:hidden;
+                   clip-path: inset(50%); white-space:nowrap; }</code></pre>
+</section>
+<section id="88-link-and-interactive-states" class="level3">
+<h3>8.8 Link and interactive states</h3>
+<table>
+<thead>
+<tr class="header">
+<th>State</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Link default</td>
+<td><code>color: var(--accent)</code>, underlined in prose; nav and card
+links not underlined</td>
+</tr>
+<tr class="even">
+<td>Hover</td>
+<td><code>color: var(--accent-strong)</code>; underline thickness
+2px</td>
+</tr>
+<tr class="odd">
+<td>Focus-visible</td>
+<td><code>outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--radius-sm)</code>
+on every focusable element; never <code>outline: none</code> without
+this replacement</td>
+</tr>
+<tr class="even">
+<td>Active nav</td>
+<td><code>aria-current="page"</code> → <code>color: var(--text)</code>,
+<code>font-weight: 600</code>, 2px underline in <code>--accent</code>
+offset 0.4em</td>
+</tr>
+<tr class="odd">
+<td>Visited</td>
+<td>Not styled differently</td>
+</tr>
+<tr class="even">
+<td>Disabled button</td>
+<td><code>opacity: 0.5; cursor: not-allowed</code> plus the
+<code>disabled</code> attribute</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="89-images-and-media" class="level3">
+<h3>8.9 Images and media</h3>
+<ul>
+<li>Formats: AVIF with a WebP fallback through
+<code>&lt;picture&gt;</code>, generated at build time at widths 480 /
+768 / 1200 / 1600, with <code>sizes</code> set to match the
+container.</li>
+<li>Fixed ratios: card media 16:9, article hero 2:1, portrait 1:1
+(<code>--radius-pill</code> when circular), embeds 16:9.</li>
+<li>Inside prose, images get
+<code>max-width: 100%; height: auto; border-radius: var(--radius-md)</code>.</li>
+<li>Icons are inline SVG, <code>currentColor</code>, 1.25 rem,
+<code>aria-hidden="true"</code> with an accessible name on the parent
+control. Icon fonts are not used.</li>
+</ul>
+</section>
+<section id="810-themes" class="level3">
+<h3>8.10 Themes</h3>
+<ul>
+<li>Two themes, <code>light</code> and <code>dark</code>, set by
+<code>html[data-theme]</code>. The default follows
+<code>prefers-color-scheme</code>; the user's explicit choice is
+persisted (§10.3).</li>
+<li>Tokens are redefined under <code>:root[data-theme="dark"]</code>.
+Components contain no theme-specific rules.</li>
+</ul>
+<hr />
+</section>
+</section>
+<section id="9-responsive-layout-requirements" class="level2">
+<h2>9. Responsive layout requirements</h2>
+<section id="91-breakpoints-r" class="level3">
+<h3>9.1 Breakpoints [R]</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Min width</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>base</td>
+<td>0</td>
+<td>Single column; nav collapsed behind toggle; TOC in
+<code>details</code>; card grid 1 column</td>
+</tr>
+<tr class="even">
+<td><code>sm</code></td>
+<td><code>40rem</code> (640 px)</td>
+<td>Inline nav row; ProjectFacts two-column; card grid 2 columns where
+space allows</td>
+</tr>
+<tr class="odd">
+<td><code>md</code></td>
+<td><code>60rem</code> (960 px)</td>
+<td>PostListItem <code>--compact</code> date column; card grid up to 3
+columns</td>
+</tr>
+<tr class="even">
+<td><code>lg</code></td>
+<td><code>75rem</code> (1200 px)</td>
+<td>Article grid with sticky TOC rail:
+<code>grid-template-columns: var(--toc-w) minmax(0, var(--w-prose)) 1fr</code></td>
+</tr>
+</tbody>
+</table>
+<p>Media queries use <code>em</code>/<code>rem</code> units
+(<code>@media (min-width: 40rem)</code>), not px. Component-internal
+layout may use container queries (<code>@container</code>), with the
+card grid as the container.</p>
+</section>
+<section id="92-rules-r" class="level3">
+<h3>9.2 Rules [R]</h3>
+<ul>
+<li>No horizontal page scroll at any width from 320 px to 2560 px. Wide
+content (tables, code, embeds) scrolls inside its own wrapper.</li>
+<li>Tap targets are ≥ 44 × 44 CSS px for nav, toggles, buttons and
+pagination.</li>
+<li>The mobile menu opens as a full-width panel under the header
+(<code>position:absolute; inset-inline:0; top:var(--header-h)</code>),
+not as an overlay drawer. The body does not scroll-lock.</li>
+<li>The article hero image is full container width on mobile and uses
+<code>.bleed-wide</code> at ≥ 60 rem.</li>
+<li>Type is fluid (§8.2), so no breakpoint changes font sizes
+directly.</li>
+</ul>
+<hr />
+</section>
+</section>
+<section id="10-navigation-and-interactive-component-requirements"
+class="level2">
+<h2>10. Navigation and interactive-component requirements</h2>
+<section id="101-navigation-structure-r" class="level3">
+<h3>10.1 Navigation structure [R]</h3>
+<ul>
+<li>Primary nav, in order: <strong>Writing · Projects · About ·
+Contact</strong>, plus the Search icon and ThemeToggle. The final labels
+are the principal's choice (§15.3).</li>
+<li>Footer nav: Writing · Projects · Topics · About · Contact · RSS ·
+Colophon.</li>
+<li>The brand wordmark always links to <code>/</code>.</li>
+</ul>
+</section>
+<section id="102-javascript-budget-r" class="level3">
+<h3>10.2 JavaScript budget [R]</h3>
+<ul>
+<li>Total JS sent on any non-search page: <strong>≤ 10 KB
+gzipped</strong>, all progressive enhancement. Every page is fully
+readable and navigable with JavaScript disabled.</li>
+<li>Islands: <code>nav-toggle</code>, <code>theme-toggle</code>,
+<code>toc-spy</code>, <code>code-copy</code>, plus <code>search</code>
+on T8 only (the Pagefind bundle is loaded only there).</li>
+</ul>
+</section>
+<section id="103-behaviour-contracts-r" class="level3">
+<h3>10.3 Behaviour contracts [R]</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Contract</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NavToggle</td>
+<td>Click toggles <code>aria-expanded</code> and the list's visibility.
+<code>Escape</code> closes it and returns focus to the toggle. Resizing
+to ≥ 40 rem resets it to closed. Without JS, the list renders expanded
+(the toggle is hidden by a <code>no-js</code> class removed on
+boot).</td>
+</tr>
+<tr class="even">
+<td>ThemeToggle</td>
+<td>Cycles light ↔︎ dark. Stores <code>localStorage["theme"]</code>
+inside try/catch. An inline head script applies the stored theme or the
+OS preference <strong>before first paint</strong> (no flash).
+<code>aria-pressed="true"</code> means dark. A change in OS preference
+is followed only while no explicit choice is stored.</td>
+</tr>
+<tr class="odd">
+<td>TOC spy</td>
+<td><code>IntersectionObserver</code> with
+<code>rootMargin: "0px 0px -70% 0px"</code>. Exactly one link has
+<code>aria-current="true"</code>. It does not change the URL hash while
+scrolling.</td>
+</tr>
+<tr class="even">
+<td>Heading anchors</td>
+<td>Every <code>h2</code>/<code>h3</code> in prose gets a stable
+<code>id</code> (slugified, deduplicated). Anchors scroll with
+<code>scroll-margin-top: calc(var(--header-h) + var(--space-4))</code>.</td>
+</tr>
+<tr class="odd">
+<td>Code copy</td>
+<td>Copies the <code>code</code> text content, announces "Copied", and
+resets after 2 s.</td>
+</tr>
+<tr class="even">
+<td>Search</td>
+<td>Debounced 150 ms. Shows up to 10 results with title, excerpt and
+highlighted terms. Results are keyboard reachable. The query syncs to
+<code>?q=</code>.</td>
+</tr>
+<tr class="odd">
+<td>Smooth scroll</td>
+<td><code>scroll-behavior: smooth</code> only inside
+<code>@media (prefers-reduced-motion: no-preference)</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</section>
+</section>
+<section id="11-accessibility-requirements" class="level2">
+<h2>11. Accessibility requirements</h2>
+<p>The target is <strong>WCAG 2.2 Level AA</strong> [R].</p>
+<ol type="1">
+<li>Landmarks and headings follow §5.2. The skip link is the first
+focusable element and moves focus to <code>main#main</code>.</li>
+<li>Contrast: text ≥ 4.5:1, large text and UI components and focus
+indicators ≥ 3:1, in <strong>both</strong> themes.</li>
+<li>Focus is always visible (§8.8). Focus order follows DOM order. There
+are no keyboard traps, including in the mobile menu.</li>
+<li>Every interactive control has an accessible name. Icon-only controls
+use <code>aria-label</code>. State is exposed with
+<code>aria-expanded</code>, <code>aria-pressed</code> and
+<code>aria-current</code>.</li>
+<li>Motion: every transition and transform is disabled under
+<code>prefers-reduced-motion: reduce</code>.</li>
+<li>Images: meaningful images have descriptive <code>alt</code>;
+decorative images have <code>alt=""</code>. Charts and diagrams also
+have a text equivalent in a caption or the surrounding prose.</li>
+<li>Text resizes to 200% without loss of content and reflows at 320 CSS
+px (WCAG 1.4.10).</li>
+<li>Target size is ≥ 24 × 24 CSS px everywhere (WCAG 2.5.8), and ≥ 44 ×
+44 for primary controls (§9.2).</li>
+<li>Language is declared with <code>html[lang]</code>. A passage in
+another language uses <code>lang</code> on its element.</li>
+<li>Embedded media: video has captions; iframes have a
+<code>title</code>.</li>
+</ol>
+<hr />
+</section>
+<section id="12-proposed-component-hierarchy-for-kingsleyobicom"
+class="level2">
+<h2>12. Proposed component hierarchy for kingsleyobi.com</h2>
+<pre class="text"><code>BaseLayout (html/head/body, SEO, theme bootstrap)
+├── SkipLink
+├── SiteHeader
+│   ├── SiteBrand
+│   ├── PrimaryNav ── NavToggle
+│   └── HeaderActions ── IconButton(Search) · ThemeToggle
+├── &lt;slot: main&gt;
+│   ├── HomeLayout ─ Hero · SectionHeader · PostList(PostListItem) · CardGrid(ProjectCard) · CTABlock
+│   ├── PageLayout ─ PageHeader · Prose
+│   ├── ArchiveLayout ─ PageHeader · TopicFilter(TagList) · PostList(PostListItem) · Pagination
+│   ├── ArticleLayout ─ ArticleHeader(ArticleMeta, TagList) · Figure? · TOC? · Prose
+│   │                   (CodeBlock · Callout · Figure · Embed · TableWrap) · ArticleFooter
+│   │                   (TagList · RelatedPosts(PostCard) · PrevNext)
+│   ├── ProjectsLayout ─ PageHeader · CardGrid(ProjectCard(Badge))
+│   ├── ProjectLayout ─ Breadcrumb · ProjectHeader(Badge, Button) · ProjectFacts · Prose · RelatedPosts
+│   ├── TopicLayout ─ (ArchiveLayout | TopicIndex)
+│   └── SearchLayout ─ PageHeader · SearchBox · SearchResults
+└── SiteFooter ─ FooterNav · SocialLinks · Legal</code></pre>
+<p>Primitives used by everything: <code>Container</code>,
+<code>Button</code>, <code>Icon</code>, <code>Tag</code>,
+<code>Badge</code>, <code>Time</code>.</p>
+<hr />
+</section>
+<section id="13-recommended-project-and-source-file-structure"
+class="level2">
+<h2>13. Recommended project and source-file structure</h2>
+<p><strong>Recommendation [R]: Astro (static output) + plain CSS with
+custom properties + Markdown/MDX content collections + Pagefind
+search.</strong> Why: it outputs static HTML with zero JavaScript by
+default (fits §10.2); its typed content collections enforce the
+frontmatter in §13.2; its built-in image pipeline covers §8.9; and it
+deploys to any static host. Any static-site generator that meets §14 is
+acceptable. The stack is not dictated by the reference site, whose
+technology was not observed (§15).</p>
+<section id="131-file-tree" class="level3">
+<h3>13.1 File tree</h3>
+<pre class="text"><code>~/Projects/Website/
+├── ISA.md                      ← this specification (canonical)
+├── ISA.html                    ← HTML rendering of this specification
+├── RESEARCH.md                 ← deferred until the reference inspection can run (§15.4)
+├── package.json  bun.lock  astro.config.mjs  tsconfig.json
+├── public/
+│   ├── favicon.svg  robots.txt  _redirects
+│   └── fonts/  inter-var.woff2  source-serif-4-var.woff2  jetbrains-mono-var.woff2
+├── src/
+│   ├── content/
+│   │   ├── config.ts           ← collection schemas (zod)
+│   │   ├── writing/*.md(x)
+│   │   ├── projects/*.md(x)
+│   │   └── pages/*.md          ← about, now, contact, colophon
+│   ├── layouts/   BaseLayout.astro  PageLayout.astro  ArticleLayout.astro  ArchiveLayout.astro
+│   │              ProjectLayout.astro  ProjectsLayout.astro  SearchLayout.astro
+│   ├── components/
+│   │   ├── site/      SkipLink  SiteHeader  PrimaryNav  NavToggle  ThemeToggle  SiteFooter
+│   │   ├── content/   Prose  ArticleHeader  ArticleMeta  TOC  CodeBlock  Callout  Figure  Embed  TableWrap
+│   │   ├── listing/   PostList  PostListItem  PostCard  ProjectCard  CardGrid  Pagination  PrevNext
+│   │   │              RelatedPosts  TopicFilter  TopicIndex
+│   │   └── ui/        Button  IconButton  Icon  Tag  TagList  Badge  Breadcrumb  Time  SearchBox  CTABlock
+│   ├── pages/
+│   │   ├── index.astro  404.astro  search.astro  rss.xml.ts
+│   │   ├── [page].astro                     ← standard pages from content/pages
+│   │   ├── writing/index.astro  writing/page/[n].astro  writing/[slug].astro
+│   │   ├── projects/index.astro  projects/[slug].astro
+│   │   └── topics/index.astro  topics/[topic]/[...page].astro
+│   ├── scripts/   theme-boot.ts (inlined)  nav-toggle.ts  toc-spy.ts  code-copy.ts
+│   ├── styles/    tokens.css  reset.css  base.css  layout.css  prose.css  components/*.css  print.css
+│   └── lib/       reading-time.ts  slugify.ts  toc.ts  remark-callouts.ts  seo.ts
+└── tests/
+    ├── e2e/       templates.spec.ts  nav.spec.ts  theme.spec.ts  responsive.spec.ts
+    ├── a11y/      axe.spec.ts
+    └── lint/      tokens-only.test.ts  html-validate.config.json</code></pre>
+</section>
+<section id="132-content-frontmatter-contracts-r" class="level3">
+<h3>13.2 Content frontmatter contracts [R]</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Collection</th>
+<th>Required</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>writing</code></td>
+<td><code>title</code>, <code>description</code> (≤ 160),
+<code>pubDate</code>, <code>topics[]</code> (≥ 1)</td>
+<td><code>updatedDate</code>, <code>dek</code>,
+<code>hero{src,alt}</code>, <code>draft</code>,
+<code>form: "article" | "note"</code></td>
+</tr>
+<tr class="even">
+<td><code>projects</code></td>
+<td><code>title</code>, <code>summary</code>,
+<code>status: "active" | "archived"</code>,
+<code>period{start,end?}</code>, <code>role</code></td>
+<td><code>cover{src,alt}</code>, <code>links[]</code>,
+<code>featured</code>, <code>stack[]</code></td>
+</tr>
+<tr class="odd">
+<td><code>pages</code></td>
+<td><code>title</code>, <code>description</code></td>
+<td><code>lede</code></td>
+</tr>
+</tbody>
+</table>
+<p>A build fails on a schema violation (AC-30).</p>
+<hr />
+</section>
+</section>
+<section id="14-testable-frontend-acceptance-criteria" class="level2">
+<h2>14. Testable frontend acceptance criteria</h2>
+<p>Each criterion names the probe that would prove it false. "All
+templates" means one representative URL per T1–T9, listed in
+<code>tests/e2e/fixtures.ts</code>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Criterion</th>
+<th>Probe (falsifier)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AC-01</td>
+<td>Every template T1–T9 builds and serves HTTP 200 (404 page serves
+404)</td>
+<td>Playwright: request each fixture URL; assert status</td>
+</tr>
+<tr class="even">
+<td>AC-02</td>
+<td>Every page has exactly one <code>header.site-header</code>,
+<code>main#main</code>, <code>footer.site-footer</code> and one
+<code>h1</code></td>
+<td>Playwright DOM count assertions on all templates</td>
+</tr>
+<tr class="odd">
+<td>AC-03</td>
+<td>No heading level is skipped on any page</td>
+<td>Script walks <code>h1–h6</code> in order; fails if a level jumps by
+more than 1</td>
+</tr>
+<tr class="even">
+<td>AC-04</td>
+<td>Every <code>nav</code> has a unique accessible name</td>
+<td>Playwright <code>getByRole('navigation')</code> names are unique per
+page</td>
+</tr>
+<tr class="odd">
+<td>AC-05</td>
+<td>Skip link is the first Tab stop and moves focus into
+<code>main</code></td>
+<td>Playwright: press Tab, Enter; assert
+<code>document.activeElement</code> is within <code>#main</code></td>
+</tr>
+<tr class="even">
+<td>AC-06</td>
+<td>The current section's nav link carries
+<code>aria-current="page"</code> on its section and descendants</td>
+<td>Visit <code>/writing/</code> and one article; assert the attribute
+on the Writing link only</td>
+</tr>
+<tr class="odd">
+<td>AC-07</td>
+<td>Generated HTML is valid</td>
+<td><code>html-validate</code> over <code>dist/**/*.html</code>: 0
+errors</td>
+</tr>
+<tr class="even">
+<td>AC-08</td>
+<td>Article pages have a <code>time[datetime]</code> publish date,
+reading time and ≥ 1 <code>a.tag[rel=tag]</code></td>
+<td>DOM assertions on every <code>writing/*</code> page</td>
+</tr>
+<tr class="odd">
+<td>AC-09</td>
+<td>TOC renders iff the article has ≥ 3 <code>h2</code>, and every TOC
+link resolves to an existing <code>id</code></td>
+<td>Build-time test over all articles</td>
+</tr>
+<tr class="even">
+<td>AC-10</td>
+<td>All in-page and internal links resolve (no 404s)</td>
+<td>Link checker (e.g. <code>lychee --offline dist</code>): 0
+broken</td>
+</tr>
+<tr class="odd">
+<td>AC-11</td>
+<td>Archive paginates at 20 items; no pagination when ≤ 20;
+<code>rel=prev/next</code> correct</td>
+<td>Fixture with 45 posts → 3 pages; assert counts and rels</td>
+</tr>
+<tr class="even">
+<td>AC-12</td>
+<td>Topic pages list exactly the posts tagged with that topic</td>
+<td>Build-time test comparing collection data to rendered lists</td>
+</tr>
+<tr class="odd">
+<td>AC-13</td>
+<td><code>rss.xml</code> is valid RSS 2.0 and lists the latest 20
+non-draft posts</td>
+<td>Feed validator + count assertion</td>
+</tr>
+<tr class="even">
+<td>AC-14</td>
+<td>Drafts never appear in any output</td>
+<td>Fixture draft; grep <code>dist/</code> for its slug: 0 matches</td>
+</tr>
+<tr class="odd">
+<td>AC-15</td>
+<td>Every page has a title, a meta description ≤ 160 chars, an absolute
+canonical URL and Open Graph title/description/image</td>
+<td>DOM assertions on all templates</td>
+</tr>
+<tr class="even">
+<td>AC-16</td>
+<td>Articles include valid <code>BlogPosting</code> JSON-LD; home
+includes <code>Person</code>; project detail includes
+<code>BreadcrumbList</code></td>
+<td>Parse JSON-LD; schema validation</td>
+</tr>
+<tr class="odd">
+<td>AC-17</td>
+<td>No horizontal page scroll at 320, 390, 768, 1024, 1440 and 2560
+px</td>
+<td>Playwright: <code>scrollWidth &lt;= clientWidth</code> at each width
+on all templates</td>
+</tr>
+<tr class="even">
+<td>AC-18</td>
+<td>Nav is collapsed behind the toggle below 40 rem and inline at ≥ 40
+rem</td>
+<td>Playwright at 390 and 1024 px: toggle visibility and list
+visibility</td>
+</tr>
+<tr class="odd">
+<td>AC-19</td>
+<td>Sticky TOC rail appears only at ≥ 75 rem; below that the TOC is a
+closed <code>details</code></td>
+<td>Playwright at 1024 and 1440 px on a long article</td>
+</tr>
+<tr class="even">
+<td>AC-20</td>
+<td>Every token colour pair in §8.5 meets its contrast target in both
+themes</td>
+<td>Contrast script over the token pairs; plus axe
+<code>color-contrast</code></td>
+</tr>
+<tr class="odd">
+<td>AC-21</td>
+<td>0 axe-core violations (WCAG 2.0/2.1/2.2 A + AA tags) on all
+templates in both themes</td>
+<td><code>@axe-core/playwright</code> run on every fixture × theme</td>
+</tr>
+<tr class="even">
+<td>AC-22</td>
+<td>Every focusable element shows a visible focus indicator</td>
+<td>Playwright: Tab through each template; assert computed
+<code>outline-style != none</code> for each focused element</td>
+</tr>
+<tr class="odd">
+<td>AC-23</td>
+<td>Primary controls are ≥ 44 × 44 px; all targets ≥ 24 × 24 px</td>
+<td>Playwright bounding-box check on <code>a, button, input</code></td>
+</tr>
+<tr class="even">
+<td>AC-24</td>
+<td>With <code>prefers-reduced-motion: reduce</code>, no element has a
+non-zero transition/animation duration</td>
+<td>Playwright <code>emulateMedia({ reducedMotion: 'reduce' })</code> +
+computed-style scan</td>
+</tr>
+<tr class="odd">
+<td>AC-25</td>
+<td>No raw colour or px spacing values outside <code>tokens.css</code>
+(except <code>1px</code> borders and <code>0</code>)</td>
+<td>Stylelint rule (<code>color-no-hex</code>,
+<code>declaration-property-unit-allowed-list</code>) on
+<code>src/styles/**</code> minus tokens</td>
+</tr>
+<tr class="even">
+<td>AC-26</td>
+<td>Theme follows the OS preference by default; an explicit choice
+persists across reloads; no flash of the wrong theme</td>
+<td>Playwright with <code>colorScheme: 'dark'</code>; toggle; reload;
+assert <code>data-theme</code> before <code>DOMContentLoaded</code></td>
+</tr>
+<tr class="odd">
+<td>AC-27</td>
+<td>Mobile menu: <code>aria-expanded</code> toggles, <code>Escape</code>
+closes it and returns focus, no focus trap</td>
+<td>Playwright keyboard test at 390 px</td>
+</tr>
+<tr class="even">
+<td>AC-28</td>
+<td>Site is fully navigable with JavaScript disabled (menu expanded, TOC
+present, all links work)</td>
+<td>Playwright <code>javaScriptEnabled: false</code> on all
+templates</td>
+</tr>
+<tr class="odd">
+<td>AC-29</td>
+<td>JS shipped on non-search pages ≤ 10 KB gzipped; search loads its
+index only on <code>/search/</code></td>
+<td>Build-output size check; network log per template</td>
+</tr>
+<tr class="even">
+<td>AC-30</td>
+<td>Content schema violations fail the build</td>
+<td>Fixture with a missing <code>pubDate</code> →
+<code>astro build</code> exits non-zero</td>
+</tr>
+<tr class="odd">
+<td>AC-31</td>
+<td>Every content <code>img</code> has <code>alt</code>,
+<code>width</code>, <code>height</code>; only the LCP image is not
+lazy</td>
+<td>DOM assertions on all templates</td>
+</tr>
+<tr class="even">
+<td>AC-32</td>
+<td>Images are served as AVIF/WebP with <code>srcset</code> at ≥ 3
+widths</td>
+<td>DOM assertion on <code>picture &gt; source[type]</code></td>
+</tr>
+<tr class="odd">
+<td>AC-33</td>
+<td>Lighthouse (mobile) on all templates: Performance ≥ 95,
+Accessibility 100, Best Practices ≥ 95, SEO 100</td>
+<td><code>lhci autorun</code> against the preview build</td>
+</tr>
+<tr class="even">
+<td>AC-34</td>
+<td>Core Web Vitals in lab: LCP &lt; 2.0 s, CLS &lt; 0.05, TBT &lt; 100
+ms (mobile, simulated 4G)</td>
+<td>Lighthouse CI assertions</td>
+</tr>
+<tr class="odd">
+<td>AC-35</td>
+<td>Code blocks scroll horizontally inside their wrapper, are
+keyboard-focusable and the copy button copies the exact code</td>
+<td>Playwright: overflow check, Tab focus, clipboard read</td>
+</tr>
+<tr class="even">
+<td>AC-36</td>
+<td>Callout Markdown syntax renders
+<code>aside.callout--{note,tip,warning}</code> with an accessible
+name</td>
+<td>Build fixture with all three; DOM assertions</td>
+</tr>
+<tr class="odd">
+<td>AC-37</td>
+<td>Search returns the fixture post for its unique title word and syncs
+<code>?q=</code></td>
+<td>Playwright on <code>/search/?q=&lt;word&gt;</code></td>
+</tr>
+<tr class="even">
+<td>AC-38</td>
+<td>Heading anchors exist for every prose <code>h2/h3</code>, ids are
+unique, and jump targets are not hidden under the header</td>
+<td>DOM check + scroll position assertion</td>
+</tr>
+<tr class="odd">
+<td>AC-39</td>
+<td>Print stylesheet hides header nav, footer nav and interactive
+controls, and prints link URLs in prose</td>
+<td>Playwright <code>emulateMedia({ media: 'print' })</code> snapshot
+assertions</td>
+</tr>
+<tr class="even">
+<td>AC-40</td>
+<td>No reference-site text, images, logos, fonts or code are present in
+the repository</td>
+<td>Manual review checklist at first release + font licence check (only
+OFL fonts in <code>public/fonts</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</section>
+<section
+id="15-evidence-references-assumptions-and-unresolved-technical-questions"
+class="level2">
+<h2>15. Evidence references, assumptions, and unresolved technical
+questions</h2>
+<section id="151-evidence-references" class="level3">
+<h3>15.1 Evidence references</h3>
+<table>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Source</th>
+<th>What it supports</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>E1</td>
+<td>Search index result for <a
+href="https://danielmiessler.com/p/considering-using-danielmiessler-com-instead-of-dmiessler-com"><span>https://danielmiessler.com/p/considering-using-danielmiessler-com-instead-of-dmiessler-com</span></a></td>
+<td>Articles on the reference site are served under
+<code>/p/&lt;slug&gt;</code></td>
+<td><strong>[O]</strong> secondary (search index), not a browser
+inspection</td>
+</tr>
+<tr class="even">
+<td>E2</td>
+<td>Connection attempts to <code>https://danielmiessler.com/</code>,
+<code>/robots.txt</code>, <code>/sitemap.xml</code> (2026-10-29)</td>
+<td>The inspection was blocked by the session's network policy</td>
+<td>Session log</td>
+</tr>
+<tr class="odd">
+<td>E3</td>
+<td>WCAG 2.2 — <a
+href="https://www.w3.org/TR/WCAG22/">https://www.w3.org/TR/WCAG22/</a></td>
+<td>§11 targets, AC-20–24</td>
+<td>Standard</td>
+</tr>
+<tr class="even">
+<td>E4</td>
+<td>WAI-ARIA Authoring Practices: Disclosure (menu button), Breadcrumb
+patterns — <a
+href="https://www.w3.org/WAI/ARIA/apg/patterns/">https://www.w3.org/WAI/ARIA/apg/patterns/</a></td>
+<td>C3, C23 behaviour</td>
+<td>Standard</td>
+</tr>
+<tr class="odd">
+<td>E5</td>
+<td>HTML Living Standard — <a
+href="https://html.spec.whatwg.org/">https://html.spec.whatwg.org/</a></td>
+<td>§5 semantics</td>
+<td>Standard</td>
+</tr>
+</tbody>
+</table>
+<p>No component, layout value, token or technology claim in this
+document comes from the reference site.</p>
+</section>
+<section id="152-assumptions" class="level3">
+<h3>15.2 Assumptions</h3>
+<ol type="1">
+<li>The site is primarily long-form writing plus a projects portfolio.
+If it is mainly a portfolio or a service site, T1 and T5 change.</li>
+<li>The site is English only (<code>lang="en"</code>). Translation
+requires a locale routing layer that is not specified here.</li>
+<li>It is hosted as static files (Cloudflare Pages, Netlify or similar),
+with no server-side rendering or user accounts.</li>
+<li>There is no comment system, newsletter backend or analytics. The
+CTABlock links to a contact page or <code>mailto:</code>. A newsletter
+integration needs a provider decision.</li>
+<li>Content is authored in Markdown in the repository.</li>
+</ol>
+</section>
+<section id="153-unresolved-questions" class="level3">
+<h3>15.3 Unresolved questions</h3>
+<table>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Question</th>
+<th>Owner</th>
+<th>Default if unanswered</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Q1</td>
+<td>What are the final nav labels and sections (e.g. Writing vs Blog,
+Work vs Projects, adding Speaking or Publications)?</td>
+<td>Principal</td>
+<td>Writing · Projects · About · Contact</td>
+</tr>
+<tr class="even">
+<td>Q2</td>
+<td>Is there a newsletter or subscription? Which provider?</td>
+<td>Principal</td>
+<td>None; CTABlock → <code>/contact/</code></td>
+</tr>
+<tr class="odd">
+<td>Q3</td>
+<td>What brand: a wordmark only or a logo mark; and the accent
+colour?</td>
+<td>Principal</td>
+<td>Text wordmark; accent <code>#1f5fbf</code></td>
+</tr>
+<tr class="even">
+<td>Q4</td>
+<td>Hosting provider and domain DNS setup?</td>
+<td>Principal</td>
+<td>Cloudflare Pages</td>
+</tr>
+<tr class="odd">
+<td>Q5</td>
+<td>Analytics (privacy-preserving or none)?</td>
+<td>Principal</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<td>Q6</td>
+<td>Is existing content being migrated from somewhere (URLs to
+redirect)?</td>
+<td>Principal</td>
+<td>No migration</td>
+</tr>
+<tr class="odd">
+<td>Q7</td>
+<td>Reference-site structure: its templates, nav pattern, TOC presence,
+dark mode, breakpoints and stack</td>
+<td>Research</td>
+<td>Unverified; see §15.4</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="154-reference-verification-protocol-to-produce-researchmd"
+class="level3">
+<h3>15.4 Reference verification protocol (to produce
+<code>RESEARCH.md</code>)</h3>
+<p>Run once <code>danielmiessler.com</code> is allowed in the session's
+network settings (or against dated <code>web.archive.org</code>
+snapshots, labelled as such):</p>
+<ol type="1">
+<li>Fetch <code>robots.txt</code> and <code>sitemap.xml</code>; choose
+one URL per page type in §2.</li>
+<li>For each URL, save the <strong>page source</strong> (raw response
+plus headers) and the <strong>rendered DOM</strong> (headless Chromium
+after network idle) as separate files.</li>
+<li>At 1440 px and 390 px, record a screenshot and
+<code>getComputedStyle</code> for <code>body</code>, <code>h1–h3</code>,
+<code>p</code>, <code>a</code>, <code>header</code>, <code>nav</code>,
+<code>main</code>, <code>footer</code>, cards, <code>pre</code> and
+buttons: font family, size, weight, line height, colours, max-width,
+margins, padding, borders, radii, shadows.</li>
+<li>Extract all <code>@media</code> queries from the loaded stylesheets
+to get exact breakpoints. Check <code>prefers-color-scheme</code> and
+theme toggles.</li>
+<li>Record technology evidence only from observable artefacts
+(<code>&lt;meta name="generator"&gt;</code>, asset paths, response
+headers, script globals).</li>
+<li>Compare the findings against every <strong>[V]</strong> item in §6,
+then revise this ISA with a version bump and a change log. Anything
+adopted from the reference site must be re-implemented originally
+(AC-40).</li>
+</ol>
+<hr />
+</section>
+</section>
+<section id="change-log" class="level2">
+<h2>Change log</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Version</th>
+<th>Date</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.1.0</td>
+<td>2026-10-29</td>
+<td>First ready-to-build specification. Reference inspection blocked;
+all design values original [R]; verification items marked [V].</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</main>
+</div>
+<footer class="doc-footer">
+  <div class="wrap"><p>Canonical source: <code>ISA.md</code>. This HTML is generated from it with pandoc; edit the Markdown, then rebuild with <code>build/build-isa-html.sh</code>.</p></div>
+</footer>
+</body>
+</html>
